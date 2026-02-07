@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "navduaxborotnoma.onrender.com",
     "navduaxborotnoma.uz",
     "www.navduaxborotnoma.uz",
+    "navdu-1.onrender.com",
 ]
 
 
@@ -143,5 +144,6 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'azizbekbakhromov12@gmail.com'
 EMAIL_HOST_PASSWORD = 'gzsevjugffhimsxu'
+
 
 
