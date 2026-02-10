@@ -13,26 +13,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3q3%xh#4$_r944z!2%4q)@#i(xq^#8&!d9x3$*g7a1cjaa&0$7'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    "navduaxborotnoma.uz",
-    "www.navduaxborotnoma.uz",
-    "navdu-1.onrender.com",  # temporary Render URL
-]
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
 
 
@@ -144,6 +130,7 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'azizbekbakhromov12@gmail.com'
 EMAIL_HOST_PASSWORD = 'gzsevjugffhimsxu'
+
 
 
 
