@@ -9,16 +9,11 @@ import dj_database_url  # make sure this is installed: pip install dj-database-u
 # BASE_DIR for paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY from environment
-SECRET_KEY = os.environ.get("SECRET_KEY")
-if not SECRET_KEY:
-    raise ValueError("SECRET_KEY environment variable not set!")
 
-# DEBUG mode
+# SECURITY: read from environment
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-for-local-dev-only")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-
-# Allowed hosts
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "navdu-1.onrender.com").split(",")
 
 # CSRF trusted origins
 CSRF_TRUSTED_ORIGINS = [
@@ -125,3 +120,4 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
