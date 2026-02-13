@@ -6,6 +6,27 @@ from django.template.loader import render_to_string
 import os
 
 
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+
+def create_superuser(request):
+    # Security: use a secret token to prevent abuse
+    secret = request.GET.get('secret', '')
+    if secret != os.environ.get('SUPERUSER_CREATION_SECRET'):
+        return HttpResponse("Not allowed", status=403)
+    
+    User = get_user_model()
+    username = "username"          # change to desired username
+    email = "isfanchik1212@gmail.com"           # change to your email
+    password = "password"     # change to a strong password
+    
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username, email, password)
+        return HttpResponse(f"Superuser '{username}' created successfully.")
+    else:
+        return HttpResponse(f"Superuser '{username}' already exists.")
+
+
 def send_email_with_attachment(subject, body, from_email, to_emails, attachment_file_path):
     email = EmailMessage(
         subject=subject,
@@ -76,3 +97,4 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
