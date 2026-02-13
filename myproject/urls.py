@@ -24,6 +24,7 @@ def create_admin_once(request):
 
 
 urlpatterns = [
+    path('debug/', views.debug_db, name='debug_db'),
     path('create-admin/', views.create_superuser, name='create_admin'),
     path('create-admin-once/', create_admin_once),
     path('admin/', admin.site.urls),
@@ -36,6 +37,7 @@ urlpatterns = [
     path('email_handler/', email_handler)
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 
