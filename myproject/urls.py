@@ -3,6 +3,10 @@ from django.urls import path , include
 from django.conf.urls.static import static
 from django.conf import settings
 from myapp.views import IndexView, ArxivView , AboutView,MuallifView,TahririyatView,TalablarView, email_handler
+from myapp import views   # replace 'your_app' with the actual app name
+
+
+
 
 # TEMPORARY - create admin (only use once, then remove)
 from django.contrib.auth import get_user_model
@@ -20,6 +24,7 @@ def create_admin_once(request):
 
 
 urlpatterns = [
+    path('create-admin/', views.create_superuser, name='create_admin'),
     path('create-admin-once/', create_admin_once),
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
@@ -31,5 +36,6 @@ urlpatterns = [
     path('email_handler/', email_handler)
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
