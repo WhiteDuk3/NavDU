@@ -10,9 +10,9 @@ from django.http import HttpResponse
 
 def create_admin_once(request):
     User = get_user_model()
-    username = "NewAdmin"                     # CHANGE THIS
+    username = "username"                     # CHANGE THIS
     email = "isfanchik1212@gmail.com"                  # CHANGE THIS
-    password = "1sf@n20Ob"       # CHANGE THIS to a strong password
+    password = "password"       # CHANGE THIS to a strong password
     if not User.objects.filter(username=username).exists():
         User.objects.create_superuser(username=username, email=email, password=password)
         return HttpResponse("Admin created")
@@ -31,4 +31,5 @@ urlpatterns = [
     path('email_handler/', email_handler)
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
