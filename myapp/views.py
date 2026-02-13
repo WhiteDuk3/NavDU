@@ -9,6 +9,21 @@ import os
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 
+
+from django.http import JsonResponse
+from django.db import connection
+from django.contrib.auth import get_user_model
+
+def debug_db(request):
+    User = get_user_model()
+    user_count = User.objects.count()
+    db_name = connection.settings_dict['NAME']
+    return JsonResponse({
+        'database': db_name,
+        'user_count': user_count,
+        'users': list(User.objects.values('username', 'is_superuser'))
+    })
+
 def create_superuser(request):
     # Security: use a secret token to prevent abuse
     secret = request.GET.get('secret', '')
@@ -97,4 +112,5 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
