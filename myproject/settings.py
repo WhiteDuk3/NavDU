@@ -4,6 +4,7 @@ Django settings for myproject project.
 
 from pathlib import Path
 import os
+from django.core.exceptions import ImproperlyConfigured
 import dj_database_url  # make sure this is installed: pip install dj-database-url
 
 # BASE_DIR for paths
@@ -16,10 +17,8 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "navdu-1.onrender.com").split(",")
 
 # CSRF trusted origins
-CSRF_TRUSTED_ORIGINS = [
-    "https://navduaxborotnoma.uz",
-    "https://www.navduaxborotnoma.uz",
-]
+_csrf_env = os.environ.get("CSRF_TRUSTED_ORIGINS", "")
+CSRF_TRUSTED_ORIGINS = [s.strip() for s in _csrf_env.split(",") if s.strip()]
 
 # Application definition
 INSTALLED_APPS = [
@@ -115,12 +114,13 @@ if not EMAIL_HOST_USER or not EMAIL_HOST_PASSWORD:
 
 # Security headers
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = os.environ.get("SESSION_COOKIE_SECURE", "True") == "True"
+CSRF_COOKIE_SECURE = os.environ.get("CSRF_COOKIE_SECURE", "True") == "True"
 SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
 
 
 
