@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path , include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 from myapp.views import IndexView, ArxivView , AboutView,MuallifView,TahririyatView,TalablarView, email_handler
@@ -30,6 +30,7 @@ urlpatterns = [
     re_path(r'^media/(?P<file_path>.*)$', views.serve_media, name='serve_media'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 
