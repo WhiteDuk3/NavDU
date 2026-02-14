@@ -5,6 +5,17 @@
     background: linear-gradient(135deg, #0d2b66 0%, #1a4a8b 100%);
 }
 
+/* Hero title font sizes (adjust as needed) */
+.bg-gradient-primary h1.display-4 {
+    font-size: 2.5rem; /* smaller than Bootstrap default */
+}
+.bg-gradient-primary .lead {
+    font-size: 1.25rem;
+}
+.bg-gradient-primary .fs-5 {
+    font-size: 1rem !important; /* for ISSN */
+}
+
 /* Navbar: only hovered link moves up */
 .navbar-nav .nav-link {
     transition: transform 0.2s ease;
@@ -15,7 +26,31 @@
     text-decoration: none;
 }
 
-/* "PDF ni o'qish" button – smooth vertical scale */
+/* Hero buttons – restore original size and hover effects */
+.bg-gradient-primary .btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+}
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+.btn-light:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    color: #212529;
+}
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: #fff;
+    color: #fff;
+}
+
+/* "PDF ni o'qish" button – vertical scale */
 .btn-outline-primary {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -45,6 +80,3 @@ footer .d-flex i:hover {
     background: none;
     opacity: 1;
 }
-
-/* Optional: ensure navbar toggler is visible on mobile (Bootstrap does this by default) */
-/* If the menu button isn't working, it's likely a JavaScript issue, not CSS. */
