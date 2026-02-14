@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 import os
 
 
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, Http404
 from django.contrib.auth import get_user_model
 
 
@@ -29,12 +29,16 @@ def list_media(request):
             files.append(relative_path)
     return JsonResponse({'files': files})
 
-def list_media(request):
-    media_root = settings.MEDIA_ROOT
-    if not os.path.exists(media_root):
-        return HttpResponse("Media directory does not exist.")
-    files = os.listdir(media_root)
-    return HttpResponse(f"Files in media: {files}")
+
+def serve_media(request, file_path):
+    # Security: prevent directory traversal
+    safe_path = os.path.normpath(file_path).lstrip('/')
+    if '..' in safe_path or safe_path.startswith('../'):
+        raise Http404
+    full_path = os.path.join(settings.MEDIA_ROOT, safe_path)
+    if os.path.exists(full_path) and os.path.isfile(full_path):
+        return FileResponse(open(full_path, 'rb'))
+    raise Http404
 
 def debug_db(request):
     User = get_user_model()
@@ -118,6 +122,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
