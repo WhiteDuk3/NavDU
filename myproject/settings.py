@@ -9,7 +9,6 @@ import dj_database_url  # make sure this is installed: pip install dj-database-u
 
 # BASE_DIR for paths
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # SECURITY: read from environment
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-for-local-dev-only")
@@ -124,6 +123,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_DOMAIN = os.environ.get("SESSION_COOKIE_DOMAIN", None)
 CSRF_COOKIE_DOMAIN = os.environ.get("CSRF_COOKIE_DOMAIN", None)
+
 
 
 
