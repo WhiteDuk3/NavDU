@@ -17,6 +17,12 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 
 
+def media_status(request):
+    media_root = settings.MEDIA_ROOT
+    exists = os.path.exists(media_root)
+    writable = os.access(media_root, os.W_OK) if exists else False
+    return HttpResponse(f"MEDIA_ROOT: {media_root}<br>Exists: {exists}<br>Writable: {writable}")
+
 def list_media(request):
     media_root = settings.MEDIA_ROOT
     if not os.path.exists(media_root):
@@ -122,6 +128,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
