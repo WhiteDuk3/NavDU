@@ -5802,3 +5802,55 @@ div {
   height: 200px;
 }
 
+/* ========== FINAL OVERRIDES FOR HOVER BEHAVIORS ========== */
+
+/* 1. Navbar: only hovered link moves up, others stay still */
+.navbar-nav .nav-link {
+    transition: transform 0.2s ease !important;
+    transform: translateY(0) !important;
+}
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px) !important;
+}
+/* Prevent any all‑links jump when hovering the navbar container */
+.navbar-nav:hover .nav-link:not(:hover) {
+    transform: translateY(0) !important;
+}
+
+/* 2. "PDF ni o'qish" button – smooth vertical scale only */
+.btn-outline-primary {
+    transition: transform 0.2s ease !important;
+}
+.btn-outline-primary:hover {
+    transform: scaleY(1.05) !important;
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    border-color: #0d6efd !important;
+}
+
+/* 3. "Barcha nashrlar" button – no scaling, smooth color change */
+.btn-primary {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.btn-primary:hover {
+    transform: none !important;
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* 4. Social icons – absolutely no hover changes */
+footer .d-flex a:hover,
+footer .d-flex i:hover {
+    transform: none !important;
+    color: inherit !important;
+    background: none !important;
+    opacity: 1 !important;
+}
+
+/* 5. Remove any dotted underlines from all links */
+a:hover, a:focus {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
