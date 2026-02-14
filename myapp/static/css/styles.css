@@ -1,45 +1,72 @@
-/* Remove any default outlines/dotted lines */
-a, .nav-link, .btn {
+/* Remove all outlines and underlines */
+a:focus, a:hover, .nav-link:focus, .nav-link:hover,
+.btn:focus, .btn:hover {
     outline: none !important;
     text-decoration: none !important;
+    box-shadow: none !important;
 }
 
-/* Navbar: only the hovered link moves up */
+/* Navbar: only hovered link moves up */
 .navbar-nav .nav-link {
     transition: transform 0.2s ease;
-    display: inline-block; /* ensures transform applies cleanly */
+    display: inline-block;
+    transform: translateY(0) !important; /* ensure base state */
 }
 .navbar-nav .nav-link:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
 }
-/* No effect on other links – they stay put */
+/* Ensure non-hovered links don't move */
+.navbar-nav .nav-link:not(:hover) {
+    transform: translateY(0) !important;
+}
 
-/* "PDF ni o'qish" button (outline-primary) – vertical scale only */
+/* PDF ni o'qish button – vertical scale only */
 .btn-outline-primary {
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
 }
 .btn-outline-primary:hover {
-    transform: scaleY(1.05);   /* vertical stretch only */
-    background-color: #0d6efd;
-    color: #fff;
-    border-color: #0d6efd;
+    transform: scaleY(1.05) !important;
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    border-color: #0d6efd !important;
+}
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    transform: scaleY(1.05) !important; /* keep on click if desired */
 }
 
-/* "Barcha nashrlar" button (primary) – no scaling, smooth color + shadow */
+/* Barcha nashrlar button – no scaling, smooth color */
 .btn-primary {
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
-.btn-primary:hover {
-    transform: none !important;           /* prevent any scaling */
-    background-color: #0b5ed7;            /* slightly darker */
-    border-color: #0a58ca;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* subtle depth */
-}
+.btn-primary:hover,
+.btn-primary:focus,
 .btn-primary:active {
-    transform: none !important;            /* also no scaling when clicked */
+    transform: none !important;
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
 }
 
-/* Social icons footer – already centered, but ensure no unwanted shifts */
+/* Hero buttons – make them consistent size */
+.hero .btn, 
+.bg-gradient-primary .btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+}
+.btn-light, .btn-outline-light {
+    /* keep their respective colors, but ensure same padding */
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+}
+/* Optional: make outline button's border subtle */
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0.1) !important;
+    border-color: #fff !important;
+}
+
+/* Social icons – already centered */
+
 footer .d-flex.gap-3 {
     justify-content: center !important;
 }
