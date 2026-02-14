@@ -17,6 +17,12 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 
 
+def test_save(request):
+    from django.core.files.base import ContentFile
+    from django.core.files.storage import default_storage
+    path = default_storage.save('test.txt', ContentFile(b'hello'))
+    return HttpResponse(f"Saved to {path}")
+
 def media_status(request):
     media_root = settings.MEDIA_ROOT
     exists = os.path.exists(media_root)
@@ -128,6 +134,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
