@@ -7,16 +7,19 @@
     <title>NavDU Axborotnomasi</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <!-- Your custom CSS – merge all custom styles into one file -->
+    <!-- Your custom CSS (optional overrides) -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Font Awesome for icons (optional, for search/filter later) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- ===== Navigation (new design, adapted to Bootstrap) ===== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
+        <!-- Logo / Brand -->
         <a class="navbar-brand" href="/">
-            <img src="{% static 'img/voiy pde.jpg' %}" alt="Logo" height="60">
+            <img src="{% static 'img/voiy pde.jpg' %}" alt="NavDU" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
                 aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,78 +37,131 @@
     </div>
 </nav>
 
-<!-- University Title -->
-<div class="container text-center my-4">
-    <h1 class="display-5">NAVOIY DAVLAT UNIVERSITETI</h1>
-    <p class="lead" id="nashr">AXBOROTNOMASI</p>
-    <div class="issn text-muted">Onlayn ISSN 2520-2480 | Chop etish ISSN 2520-6990</div>
-</div>
-
-<!-- PDF Grid (Latest issues) -->
-<div class="container my-5">
-    <div class="row g-4">
-        {% for pdf in pdf_files %}
-        <div class="col-6 col-md-4 col-lg-2">
-            <div class="card h-100 text-center">
-                <a href="{{ pdf.file.url }}">
-                    <img src="{{ pdf.image.url }}" class="card-img-top img-fluid" alt="{{ pdf.name }}">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{{ pdf.file.url }}" class="text-decoration-none text-dark">{{ pdf.name }}</a>
-                    </h5>
+<!-- ===== Hero Section (blue gradient) ===== -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-3">NAVOIY DAVLAT UNIVERSITETI</h1>
+                <p class="lead mb-4">AXBOROTNOMASI</p>
+                <p class="fs-5 mb-4 opacity-75">Onlayn ISSN 2520-2480 | Chop etish ISSN 2520-6990</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="/arxiv" class="btn btn-light btn-lg px-4 py-2">So'nggi sonlar</a>
+                    <a href="/talablar" class="btn btn-outline-light btn-lg px-4 py-2">Mualliflarga</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
-    <div class="text-center mt-4">
-        <a href="/arxiv" class="btn btn-outline-primary">to'liq arxiv →</a>
-    </div>
-</div>
+</section>
 
-<!-- Features Cards -->
-<div class="container py-5">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <img src="{% static 'img/simple-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Professionalizm">
-                <h4>Professionalizm</h4>
-                <p class="text-muted">Har kimga individual yondashish – Kafolatlar – Maxfiylik – Etika – O'z vaqtidalik – Halollik – Iqtisodiyot – Iqtisodiylik – Barqarorlik</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <img src="{% static 'img/professional-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Samaradorlik">
-                <h4>Samaradorlik</h4>
-                <p class="text-muted">Konferentsiyalarimizning aksariyati ham ishtirokchilar, ham umuman o'quvchilar uchun ilmiy salohiyatni oshirish va martaba natijalariga erishishga yordam beradi.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <img src="{% static 'img/result-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Oddiylik">
-                <h4>Oddiylik</h4>
-                <p class="text-muted">Muloqot qilishning oson usuli, ishni topshirish. Barcha yuzaga kelishi mumkin bo'lgan savollarga yordam bering.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-light text-center text-muted py-4">
+<!-- ===== Latest Articles Grid (from database) ===== -->
+<section class="py-5 bg-light">
     <div class="container">
-        <ul class="list-inline mb-2">
-            <li class="list-inline-item"><a href="/about" class="text-decoration-none">BIZ HAQIMIZDA</a></li>
-            <li class="list-inline-item"><a href="/tahririyat" class="text-decoration-none">TAHRIRIYAT JAMOASI</a></li>
-            <li class="list-inline-item"><a href="/talablar" class="text-decoration-none">NASHR QILISH SHARTLARI</a></li>
-            <li class="list-inline-item"><a href="/arxiv" class="text-decoration-none">ARXIV</a></li>
-            <li class="list-inline-item"><a href="/muallif" class="text-decoration-none">MUALLIF PROFILI</a></li>
-        </ul>
-        <p class="mb-0">NAVDPI © 2024 Axborotnoma</p>
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-semibold">So'nggi nashrlar</h2>
+            <p class="text-secondary">Jurnalning eng so'nggi sonlari va maqolalari</p>
+        </div>
+        <div class="row g-4">
+            {% for pdf in pdf_files %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <a href="{{ pdf.file.url }}" class="text-decoration-none">
+                        <img src="{{ pdf.image.url }}" class="card-img-top" alt="{{ pdf.name }}" style="height: 240px; object-fit: cover;">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ pdf.file.url }}" class="text-decoration-none text-dark">{{ pdf.name }}</a>
+                        </h5>
+                        <!-- You can add author or date here if available in your model -->
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pb-3">
+                        <a href="{{ pdf.file.url }}" class="btn btn-outline-primary btn-sm w-100">PDF ni o'qish</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-secondary">Hozircha nashrlar mavjud emas.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="/arxiv" class="btn btn-primary px-5 py-2">Barcha nashrlar →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Features / Values (adapted from original) ===== -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="{% static 'img/simple-s.png' %}" alt="Professionalizm" height="80" class="mb-3">
+                    <h4 class="fw-semibold">Professionalizm</h4>
+                    <p class="text-secondary">Har kimga individual yondashish – Kafolatlar – Maxfiylik – Etika – O'z vaqtidalik – Halollik – Iqtisodiyot – Iqtisodiylik – Barqarorlik</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="{% static 'img/professional-s.png' %}" alt="Samaradorlik" height="80" class="mb-3">
+                    <h4 class="fw-semibold">Samaradorlik</h4>
+                    <p class="text-secondary">Konferentsiyalarimizning aksariyati ham ishtirokchilar, ham umuman o'quvchilar uchun ilmiy salohiyatni oshirish va martaba natijalariga erishishga yordam beradi.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="{% static 'img/result-s.png' %}" alt="Oddiylik" height="80" class="mb-3">
+                    <h4 class="fw-semibold">Oddiylik</h4>
+                    <p class="text-secondary">Muloqot qilishning oson usuli, ishni topshirish. Barcha yuzaga kelishi mumkin bo'lgan savollarga yordam bering.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="bg-dark text-white-50 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">NavDU Axborotnomasi</h5>
+                <p class="small">Ilmiy jurnal • 2025</p>
+                <p class="small">Onlayn ISSN 2520-2480<br>Chop etish ISSN 2520-6990</p>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h6 class="text-white">Sahifalar</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/about" class="text-white-50 text-decoration-none">Biz haqimizda</a></li>
+                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat</a></li>
+                    <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
+                    <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
+                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Muallif profili</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Bog'lanish</h6>
+                <ul class="list-unstyled small">
+                    <li><i class="fas fa-envelope me-2"></i> journal@navdu.uz</li>
+                    <li><i class="fas fa-phone me-2"></i> +998 78 113-44-54</li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Ijtimoiy tarmoqlar</h6>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-top border-secondary pt-4 mt-2 text-center small">
+            <p>© 2024 Navoiy davlat universiteti. Barcha huquqlar himoyalangan.</p>
+        </div>
     </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap JS bundle -->
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
