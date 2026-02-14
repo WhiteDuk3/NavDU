@@ -1,42 +1,45 @@
-/* Remove dotted underline from all links on hover/focus */
-a:hover, a:focus, .nav-link:hover, .nav-link:focus,
-.btn:hover, .btn:focus {
-    text-decoration: none !important;
+/* Remove any default outlines/dotted lines */
+a, .nav-link, .btn {
     outline: none !important;
-    box-shadow: none !important;
+    text-decoration: none !important;
 }
 
-/* Navbar links: smooth upward movement on hover */
+/* Navbar: only the hovered link moves up */
 .navbar-nav .nav-link {
     transition: transform 0.2s ease;
+    display: inline-block; /* ensures transform applies cleanly */
 }
 .navbar-nav .nav-link:hover {
     transform: translateY(-2px);
 }
+/* No effect on other links – they stay put */
 
-/* PDF ni o'qish button (outline-primary): keep vertical scale */
+/* "PDF ni o'qish" button (outline-primary) – vertical scale only */
 .btn-outline-primary {
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 .btn-outline-primary:hover {
-    transform: scaleY(1.05);   /* vertical enlargement */
-    background-color: #0d6efd; /* Bootstrap primary */
-    color: white;
+    transform: scaleY(1.05);   /* vertical stretch only */
+    background-color: #0d6efd;
+    color: #fff;
     border-color: #0d6efd;
 }
 
-/* Barcha nashrlar button (primary) - smooth background change, no scaling */
+/* "Barcha nashrlar" button (primary) – no scaling, smooth color + shadow */
 .btn-primary {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .btn-primary:hover {
-    transform: none;            /* prevent any scaling */
-    background-color: #0b5ed7;  /* slightly darker blue */
+    transform: none !important;           /* prevent any scaling */
+    background-color: #0b5ed7;            /* slightly darker */
     border-color: #0a58ca;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* optional subtle shadow */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* subtle depth */
+}
+.btn-primary:active {
+    transform: none !important;            /* also no scaling when clicked */
 }
 
-/* Social icons in footer: center them */
+/* Social icons footer – already centered, but ensure no unwanted shifts */
 footer .d-flex.gap-3 {
     justify-content: center !important;
 }
