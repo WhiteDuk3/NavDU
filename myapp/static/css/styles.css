@@ -1,0 +1,50 @@
+/* ===== CUSTOM STYLES FOR NavDU Axborotnomasi ===== */
+
+/* Hero gradient */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0d2b66 0%, #1a4a8b 100%);
+}
+
+/* Navbar: only hovered link moves up */
+.navbar-nav .nav-link {
+    transition: transform 0.2s ease;
+    transform: translateY(0);
+}
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* "PDF ni o'qish" button – smooth vertical scale */
+.btn-outline-primary {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.btn-outline-primary:hover {
+    transform: scaleY(1.05);
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* "Barcha nashrlar" button – no scaling, smooth color */
+.btn-primary {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+    transform: none;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Social icons – no hover changes */
+footer .d-flex a:hover,
+footer .d-flex i:hover {
+    transform: none;
+    color: inherit;
+    background: none;
+    opacity: 1;
+}
+
+/* Optional: ensure navbar toggler is visible on mobile (Bootstrap does this by default) */
+/* If the menu button isn't working, it's likely a JavaScript issue, not CSS. */
