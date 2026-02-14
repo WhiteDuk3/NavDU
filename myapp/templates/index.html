@@ -1,19 +1,18 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>NavDU Axborotnomasi</title>
-    <!-- Bootstrap CSS (local) – adjust path if needed -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <!-- Your custom CSS – merge all custom styles into one file -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <!-- Optional: ABeeZee font (if you really need it) -->
-    <link rel="stylesheet" href="{% static 'css/ABeeZee.css' %}">
 </head>
 <body>
 
-<!-- ======= Header / Navigation ======= -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -35,20 +34,20 @@
     </div>
 </nav>
 
-<!-- ======= University Title ======= -->
+<!-- University Title -->
 <div class="container text-center my-4">
     <h1 class="display-5">NAVOIY DAVLAT UNIVERSITETI</h1>
     <p class="lead" id="nashr">AXBOROTNOMASI</p>
     <div class="issn text-muted">Onlayn ISSN 2520-2480 | Chop etish ISSN 2520-6990</div>
 </div>
 
-<!-- ======= PDF Grid (Latest 6 issues) ======= -->
+<!-- PDF Grid (Latest issues) -->
 <div class="container my-5">
     <div class="row g-4">
         {% for pdf in pdf_files %}
         <div class="col-6 col-md-4 col-lg-2">
             <div class="card h-100 text-center">
-                <a href="{{ pdf.file.url }}" class="text-decoration-none">
+                <a href="{{ pdf.file.url }}">
                     <img src="{{ pdf.image.url }}" class="card-img-top img-fluid" alt="{{ pdf.name }}">
                 </a>
                 <div class="card-body">
@@ -65,7 +64,7 @@
     </div>
 </div>
 
-<!-- ======= Features Cards ======= -->
+<!-- Features Cards -->
 <div class="container py-5">
     <div class="row g-4">
         <div class="col-md-4">
@@ -92,7 +91,7 @@
     </div>
 </div>
 
-<!-- ======= Footer ======= -->
+<!-- Footer -->
 <footer class="bg-light text-center text-muted py-4">
     <div class="container">
         <ul class="list-inline mb-2">
@@ -106,9 +105,7 @@
     </div>
 </footer>
 
-<!-- Bootstrap JS (with Popper) -->
+<!-- Bootstrap JS -->
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<!-- Optional: your custom JS -->
-<script src="{% static 'js/Navbar---Apple-navbar---apple.js' %}"></script>
 </body>
 </html>
