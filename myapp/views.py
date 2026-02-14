@@ -16,6 +16,19 @@ from django.contrib.auth import get_user_model
 
 from django.conf import settings
 
+
+def list_media(request):
+    media_root = settings.MEDIA_ROOT
+    if not os.path.exists(media_root):
+        return JsonResponse({'error': 'Media directory does not exist'})
+    files = []
+    for root, dirs, filenames in os.walk(media_root):
+        for f in filenames:
+            full_path = os.path.join(root, f)
+            relative_path = os.path.relpath(full_path, media_root)
+            files.append(relative_path)
+    return JsonResponse({'files': files})
+
 def list_media(request):
     media_root = settings.MEDIA_ROOT
     if not os.path.exists(media_root):
@@ -105,6 +118,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
