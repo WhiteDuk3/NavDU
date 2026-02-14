@@ -26,9 +26,11 @@ urlpatterns = [
     path('muallif/', MuallifView.as_view(), name='muallif'),
     path('tahririyat/', TahririyatView.as_view(), name='tahririryat'),
     path('talablar/', TalablarView.as_view(), name='talablar'),
-    path('email_handler/', email_handler)
+    path('email_handler/', email_handler),
+    re_path(r'^media/(?P<file_path>.*)$', views.serve_media, name='serve_media'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 
