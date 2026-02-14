@@ -9,4 +9,6 @@ setuptools==65.5.0
 sqlparse==0.5.1
 tzdata==2024.1
 whitenoise==6.11.0
+cloudinary
+django-cloudinary-storage
 
