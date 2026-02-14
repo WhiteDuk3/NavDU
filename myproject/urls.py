@@ -16,6 +16,7 @@ from django.http import HttpResponse
 
 
 urlpatterns = [
+    path('debug/media/', views.list_media, name='list_media'),
     path('debug/', views.debug_db, name='debug_db'),
     path('list-media/', views.list_media, name='list_media'),
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('email_handler/', email_handler)
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 
