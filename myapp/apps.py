@@ -7,9 +7,14 @@ class MyappConfig(AppConfig):
     name = 'myapp'
 
     def ready(self):
-        # Create media subdirectories on startup
+        # Create necessary media subdirectories on application startup
         media_root = settings.MEDIA_ROOT
-        subdirs = ['newsniasosi', 'pdfs']  # add any upload_to folders you use
-        for sub in subdirs:
-            path = os.path.join(media_root, sub)
-            os.makedirs(path, exist_ok=True)
+        # Add both 'pdfs' and 'newsniasosi' to the list
+        subdirs_to_create = ['pdfs', 'newsniasosi']
+        for subdir in subdirs_to_create:
+            dir_path = os.path.join(media_root, subdir)
+            try:
+                os.makedirs(dir_path, exist_ok=True)
+                print(f"Ensured directory exists: {dir_path}")
+            except Exception as e:
+                print(f"Error creating directory {dir_path}: {e}")
