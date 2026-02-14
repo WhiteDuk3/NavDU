@@ -1,3 +1,47 @@
+/* Remove dotted underline from all links on hover/focus */
+a:hover, a:focus, .nav-link:hover, .nav-link:focus,
+.btn:hover, .btn:focus {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Navbar links: smooth upward movement on hover */
+.navbar-nav .nav-link {
+    transition: transform 0.2s ease;
+}
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px);
+}
+
+/* PDF ni o'qish button (outline-primary): keep vertical scale */
+.btn-outline-primary {
+    transition: all 0.2s ease;
+}
+.btn-outline-primary:hover {
+    transform: scaleY(1.05);   /* vertical enlargement */
+    background-color: #0d6efd; /* Bootstrap primary */
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* Barcha nashrlar button (primary) - smooth background change, no scaling */
+.btn-primary {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+    transform: none;            /* prevent any scaling */
+    background-color: #0b5ed7;  /* slightly darker blue */
+    border-color: #0a58ca;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* optional subtle shadow */
+}
+
+/* Social icons in footer: center them */
+footer .d-flex.gap-3 {
+    justify-content: center !important;
+}
+
+
 .menuback {
   -webkit-text-size-adjust: 100%;
   font-family: var(--global--font-secondary);
