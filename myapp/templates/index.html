@@ -1,165 +1,114 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>jurnal</title>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/ABeeZee.css">
-    <link rel="stylesheet" href="../static/css/Abyssinica%20SIL.css">
-    <link rel="stylesheet" href="../static/css/Alegreya%20SC.css">
-    <link rel="stylesheet" href="../static/css/aboutus.css">
-    <link rel="stylesheet" href="../static/css/Bold-BS4-Footer-Simple.css">
-    <link rel="stylesheet" href="../static/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-    <link rel="stylesheet" href="../static/css/Features-Cards-icons.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple-1.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple.css">
-    <link rel="stylesheet" href="../static/css/Navigation-Menu.css">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/tahririyat.css">
-    <link rel="stylesheet" href="../static/css/talab.css">
+    <title>NavDU Axborotnomasi</title>
+    <!-- Bootstrap CSS (local) – adjust path if needed -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- Your custom CSS – merge all custom styles into one file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Optional: ABeeZee font (if you really need it) -->
+    <link rel="stylesheet" href="{% static 'css/ABeeZee.css' %}">
 </head>
+<body>
 
-<body style="padding-top: 0px;margin-top: 0px;font-family: ABeeZee, sans-serif;font-size: 13px;color: var(--bs-body-color);">
-    <header id="tepajonim" style="margin-top: 0px;padding-top: 8px;">
-        <div class="visible" id="top" style="margin-left: -11px;" data-bs-target="#site-navigation" data-bs-smooth-scroll="true"><a href="/" style="padding-top: 0px;">&nbsp;<img src="../static/img/voiy%20pde.jpg" width="310" height="98" style="padding-top: 0px;margin-top: 1px;padding-left: 2px;margin-left: 224px;"></a></div>
-        <div class="menuback">
-            <div class="menunofull">
-                <nav id="site-navigation" class="primary-navigation" aria-label="Primary menu" style="padding-top: 10px;margin-left: 6px;">
-                    <div class="primary-menu-container">
-                        <ul id="primary-menu-list" class="menu-wrapper">
-                            <li id="menu-item-1733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1733"><a href="/about" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">BIZ HAQIMIZDA</span></a></li>
-                            <li id="menu-item-1301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1301"><a href="/tahririyat" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">TAHRIRIYAT JAMOASI</span></a></li>
-                            <li id="menu-item-1764" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1764"><a href="/talablar" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">NASHR QILISH SHARTLARI</span></a></li>
-                            <li id="menu-item-1298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298"><a href="/arxiv" data-ps2id-api="true" style="font-size: 16pz;">ARXIV</a></li>
-                            <li id="menu-item-1262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1262"><a href="/muallif" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover); background-color: transparent;">MUALLIF PROFILI</span><br><br></a></li>
-                            <li id="menu-item-1737" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1737"></li>
-                            <li id="menu-item-1251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1251"></li>
-                            <li id="menu-item-1806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1806"></li>
-                            <li id="menu-item-1289" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1289"></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+<!-- ======= Header / Navigation ======= -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/voiy pde.jpg' %}" alt="Logo" height="60">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/about">BIZ HAQIMIZDA</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tahririyat">TAHRIRIYAT JAMOASI</a></li>
+                <li class="nav-item"><a class="nav-link" href="/talablar">NASHR QILISH SHARTLARI</a></li>
+                <li class="nav-item"><a class="nav-link" href="/arxiv">ARXIV</a></li>
+                <li class="nav-item"><a class="nav-link" href="/muallif">MUALLIF PROFILI</a></li>
+            </ul>
         </div>
-        <div class="submenu">
-            <div class="subnofull">
-                <div class="issn"><span>Onlayn ISSN 2520-2480 Chop etish ISSN 2520-6990</span></div>
-            </div>
-        </div>
-    </header>
-    <div id="okansila"></div>
-    <div id="pde" class=".fornofull" style="padding-bottom: 0px;padding-top: 0px;margin-top: 4px;margin-bottom: -1px;"><span style="margin-top: -19px;padding-top: 18px;">NAVOIY DAVLAT UNIVERSITETI</span>
-        <p id="nashr">AXBOROTNOMASI</p>
     </div>
-    <div class="fornofull" style="padding-top: 0px;margin-top: 26px;"><style type="text/css" media="all">#rt-tpg-container-2875887551 .rt-holder .rt-woo-info .price{color:#0367bf;}body .rt-tpg-container .rt-tpg-isotope-buttons .selected,
-    #rt-tpg-container-2875887551 .layout12 .rt-holder:hover .rt-detail,
-    #rt-tpg-container-2875887551 .isotope8 .rt-holder:hover .rt-detail,
-    #rt-tpg-container-2875887551 .carousel8 .rt-holder:hover .rt-detail,
-    #rt-tpg-container-2875887551 .layout13 .rt-holder .overlay .post-info,
-    #rt-tpg-container-2875887551 .isotope9 .rt-holder .overlay .post-info,
-    #rt-tpg-container-2875887551.rt-tpg-container .layout4 .rt-holder .rt-detail,
-    .rt-modal-2875887551 .md-content,
-    .rt-modal-2875887551 .md-content > .rt-md-content-holder .rt-md-content,
-    .rt-popup-wrap-2875887551.rt-popup-wrap .rt-popup-navigation-wrap,
-    #rt-tpg-container-2875887551 .carousel9 .rt-holder .overlay .post-info{background-color:#0367bf;}#rt-tpg-container-2875887551 .layout5 .rt-holder .overlay, #rt-tpg-container-2875887551 .isotope2 .rt-holder .overlay, #rt-tpg-container-2875887551 .carousel2 .rt-holder .overlay,#rt-tpg-container-2875887551 .layout15 .rt-holder h3, #rt-tpg-container-2875887551 .isotope11 .rt-holder h3, #rt-tpg-container-2875887551 .carousel11 .rt-holder h3, #rt-tpg-container-2875887551 .layout16 .rt-holder h3,
-    #rt-tpg-container-2875887551 .isotope12 .rt-holder h3, #rt-tpg-container-2875887551 .carousel12 .rt-holder h3 {background-color:rgba(3,103,191,0.8);}#rt-tpg-container-2875887551 .read-more a{border-radius:px;}#rt-tpg-container-2875887551 .rt-img-holder img.rt-img-responsive,#rt-tpg-container-2875887551 .rt-img-holder,
-    #rt-tpg-container-2875887551 .rt-post-overlay .post-img,
-    #rt-tpg-container-2875887551 .post-sm .post-img,
-    #rt-tpg-container-2875887551 .rt-post-grid .post-img,
-    #rt-tpg-container-2875887551 .post-img img {border-radius:px;}#rt-tpg-container-2875887551 .layout1 .rt-holder h2.entry-title,
-    #rt-tpg-container-2875887551 .layout1 .rt-holder h3.entry-title,
-    #rt-tpg-container-2875887551 .layout1 .rt-holder h4.entry-title,
-    #rt-tpg-container-2875887551 .layout1 .rt-holder h2.entry-title a,
-    #rt-tpg-container-2875887551 .layout1 .rt-holder h3.entry-title a,
-    #rt-tpg-container-2875887551 .layout1 .rt-holder h4.entry-title a,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h2 a,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h3 a,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h4 a,
-    #rt-tpg-container-2875887551 .post-content .post-title,
-    #rt-tpg-container-2875887551 .rt-post-grid .post-title,
-    #rt-tpg-container-2875887551 .rt-post-grid .post-title a,
-    #rt-tpg-container-2875887551 .post-content .post-title a,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h2,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h3,
-    #rt-tpg-container-2875887551 .rt-holder .rt-woo-info h4{font-size:16px;line-height:26px;font-weight:normal;text-align:center;}#rt-tpg-container-2875887551 .post-grid-lg-style-1 .post-title,
-    #rt-tpg-container-2875887551 .post-grid-lg-style-1 .post-title a,
-    #rt-tpg-container-2875887551 .big-layout .post-title,
-    #rt-tpg-container-2875887551 .big-layout .post-title a,
-    #rt-tpg-container-2875887551 .post-grid-lg-style-1 .post-title,
-    #rt-tpg-container-2875887551 .post-grid-lg-style-1 .post-title a {font-size:24px;line-height:34px;}</style>
-        <div class="rt-container-fluid rt-tpg-container tpg-shortcode-main-wrapper" id="rt-tpg-container-2875887551" data-layout="layout1" data-grid-style="even" data-desktop-col="6" data-tab-col="3" data-mobile-col="2" data-sc-id="1212">
-            <div data-title="Loading ..." class="rt-row rt-content-loader layout1 tpg-even">
-                {% for pdf_file in pdf_files %}
-    <div class="rt-col-md-2 rt-col-sm-4 rt-col-xs-6 even-grid-item rt-grid-item" data-id="3041">
-        <div class="rt-holder">
-            <div class="rt-img-holder">
-                <a data-id="3041" href="{{ pdf_file.file.url }}">
-                    <img width="400" height="472" src="{{ pdf_file.image.url }}" class="rt-img-responsive" alt="" style="width:100%;height:118%;max-width:400px;">
+</nav>
+
+<!-- ======= University Title ======= -->
+<div class="container text-center my-4">
+    <h1 class="display-5">NAVOIY DAVLAT UNIVERSITETI</h1>
+    <p class="lead" id="nashr">AXBOROTNOMASI</p>
+    <div class="issn text-muted">Onlayn ISSN 2520-2480 | Chop etish ISSN 2520-6990</div>
+</div>
+
+<!-- ======= PDF Grid (Latest 6 issues) ======= -->
+<div class="container my-5">
+    <div class="row g-4">
+        {% for pdf in pdf_files %}
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 text-center">
+                <a href="{{ pdf.file.url }}" class="text-decoration-none">
+                    <img src="{{ pdf.image.url }}" class="card-img-top img-fluid" alt="{{ pdf.name }}">
                 </a>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ pdf.file.url }}" class="text-decoration-none text-dark">{{ pdf.name }}</a>
+                    </h5>
+                </div>
             </div>
-            <div class="rt-detail">
-                <h3 class="entry-title">
-                    <a data-id="3041" href="{{ pdf_file.file.url }}">{{ pdf_file.name }}</a>
-                </h3>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <a href="/arxiv" class="btn btn-outline-primary">to'liq arxiv →</a>
+    </div>
+</div>
+
+<!-- ======= Features Cards ======= -->
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 text-center p-3">
+                <img src="{% static 'img/simple-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Professionalizm">
+                <h4>Professionalizm</h4>
+                <p class="text-muted">Har kimga individual yondashish – Kafolatlar – Maxfiylik – Etika – O'z vaqtidalik – Halollik – Iqtisodiyot – Iqtisodiylik – Barqarorlik</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 text-center p-3">
+                <img src="{% static 'img/professional-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Samaradorlik">
+                <h4>Samaradorlik</h4>
+                <p class="text-muted">Konferentsiyalarimizning aksariyati ham ishtirokchilar, ham umuman o'quvchilar uchun ilmiy salohiyatni oshirish va martaba natijalariga erishishga yordam beradi.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 text-center p-3">
+                <img src="{% static 'img/result-s.png' %}" class="mx-auto mb-3" style="max-width: 80px;" alt="Oddiylik">
+                <h4>Oddiylik</h4>
+                <p class="text-muted">Muloqot qilishning oson usuli, ishni topshirish. Barcha yuzaga kelishi mumkin bo'lgan savollarga yordam bering.</p>
             </div>
         </div>
     </div>
-{% endfor %}
-            </div>
-        </div>
-        <div class="allarch"><a href="/arxiv" style="padding-bottom: 0px;margin-bottom: 6px;color: var(--bs-body-bg);font-size: 13px;margin-top: -1px;padding-top: 10px;">to'liq arxiv</a></div>
-    </div><!-- Start: Features Cards -->
-    <div class="container py-4 py-xl-5">
-        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body p-4" style="padding-right: 0px;margin-right: -24px;margin-top: -24px;"><img src="../static/img/simple-s.png" style="padding-left: 0px;margin-left: 0px;margin-bottom: 6px;" width="103" height="96">
-                        <h4 class="card-title">Professionalizm</h4>
-                        <p class="card-text" style="padding-left: 0px;margin-left: 0px;"><span style="color: rgb(0, 0, 0);">Har kimga individual yondashish - Kafolatlar - Maxfiylik - Etika - O'z vaqtidalik - Halollik - Iqtisodiyot - Iqtisodiylik - Barqarorlik</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body p-4"><img src="../static/img/professional-s.png" style="padding-top: 0px;margin-top: -24px;margin-bottom: 6px;">
-                        <h4 class="card-title">Samaradorlik</h4>
-                        <p class="card-text" style="padding-left: 0px;margin-left: 0px;"><span style="color: rgb(0, 0, 0);">Konferentsiyalarimizning aksariyati ham ishtirokchilar, ham umuman o'quvchilar uchun ilmiy salohiyatni oshirish va martaba natijalariga erishishga yordam beradi.</span><br><br></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body p-4"><img src="../static/img/result-s.png" style="margin-top: -22px;margin-bottom: 4px;">
-                        <h4 class="card-title">Oddiylik</h4>
-                        <p class="card-text"><span style="color: rgb(0, 0, 0);">Muloqot qilishning oson usuli, ishni topshirish. Barcha yuzaga kelishi mumkin bo'lgan savollarga yordam bering.</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!-- End: Features Cards -->
-    <!-- Start: Footer Basic -->
-    <footer class="text-center" style="background: rgb(239,240,241);">
-        <div class="container text-muted py-4 py-lg-5">
-            <ul class="list-inline">
-                <li class="list-inline-item me-4"></li>
-            </ul>
-            <p class="mb-0" style="color: rgb(148,150,151);">NAVDPI© 2024 Axborotnoma</p>
-            <ul id="primary-menu-list" class="menu-wrapper">
-                <li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1733"><a href="/about" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">BIZ HAQIMIZDA</span></a></li>
-                <li id="menu-item-11" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1301"><a href="/tahririyat" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">TAHRIRIYAT JAMOASI</span></a></li>
-                <li id="menu-item-12" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1764"><a href="/talablar" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">NASHR QILISH SHARTLARI</span></a></li>
-                <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298"><a href="/arxiv" data-ps2id-api="true" style="font-size: 16pz;">ARXIV</a></li>
-                <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1262"><a href="/muallif" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover); background-color: transparent;">MUALLIF PROFILI</span><br><br></a></li>
-                
-            </ul>
-        </div>
-    </footer><!-- End: Footer Basic -->
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../static/js/Contact-Form-v2-Modal--Full-with-Google-Map-scripts.js"></script>
-    <script src="../static/js/Navbar---Apple-navbar---apple.js"></script>
-</body>
+</div>
 
+<!-- ======= Footer ======= -->
+<footer class="bg-light text-center text-muted py-4">
+    <div class="container">
+        <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="/about" class="text-decoration-none">BIZ HAQIMIZDA</a></li>
+            <li class="list-inline-item"><a href="/tahririyat" class="text-decoration-none">TAHRIRIYAT JAMOASI</a></li>
+            <li class="list-inline-item"><a href="/talablar" class="text-decoration-none">NASHR QILISH SHARTLARI</a></li>
+            <li class="list-inline-item"><a href="/arxiv" class="text-decoration-none">ARXIV</a></li>
+            <li class="list-inline-item"><a href="/muallif" class="text-decoration-none">MUALLIF PROFILI</a></li>
+        </ul>
+        <p class="mb-0">NAVDPI © 2024 Axborotnoma</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS (with Popper) -->
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Optional: your custom JS -->
+<script src="{% static 'js/Navbar---Apple-navbar---apple.js' %}"></script>
+</body>
 </html>
