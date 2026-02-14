@@ -1,37 +1,26 @@
-/* ===== CUSTOM STYLES FOR NavDU Axborotnomasi ===== */
+/* ===== NavDU Axborotnomasi – Custom Styles ===== */
 
 /* Hero gradient */
 .bg-gradient-primary {
     background: linear-gradient(135deg, #0d2b66 0%, #1a4a8b 100%);
 }
 
-/* Navbar font size (smaller) */
+/* Navbar font size */
 .navbar-nav .nav-link {
     font-size: 13px !important;
     transition: transform 0.2s ease;
     transform: translateY(0);
 }
+
+/* Navbar hover – only the hovered link moves up */
 .navbar-nav .nav-link:hover {
     transform: translateY(-2px);
     text-decoration: none;
 }
 
-/* Hero title fonts – match original */
-.bg-gradient-primary h1.display-4 {
-    font-size: 2.2rem; /* adjust if needed */
-}
-.bg-gradient-primary .lead {
-    font-size: 1.3rem;
-}
-.bg-gradient-primary .fs-5 {
-    font-size: 1rem !important;
-}
-
-/* Hero buttons – dynamic scale and hover */
+/* Hero buttons – dynamic scale on hover */
 .bg-gradient-primary .btn {
     transition: transform 0.2s ease, background-color 0.2s ease;
-    padding: 0.75rem 1.5rem !important;
-    font-size: 1rem !important;
 }
 .bg-gradient-primary .btn:hover {
     transform: scale(1.05);
@@ -44,7 +33,6 @@
     background-color: #e2e6ea;
     border-color: #dae0e5;
     color: #212529;
-    transform: scale(1.05);
 }
 .btn-outline-light {
     color: #fff;
@@ -54,7 +42,6 @@
     background-color: rgba(255,255,255,0.1);
     border-color: #fff;
     color: #fff;
-    transform: scale(1.05);
 }
 
 /* "PDF ni o'qish" button – vertical scale only */
@@ -79,7 +66,7 @@
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Social icons – no hover changes */
+/* Social icons – absolutely no hover changes */
 footer .d-flex a:hover,
 footer .d-flex i:hover {
     transform: none;
