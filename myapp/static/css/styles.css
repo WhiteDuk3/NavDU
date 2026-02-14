@@ -46,13 +46,13 @@
 
 /* "PDF ni o'qish" button – vertical scale only */
 .btn-outline-primary {
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease !important;
 }
 .btn-outline-primary:hover {
-    transform: scaleY(1.05);
-    background-color: #0d6efd;
-    color: #fff;
-    border-color: #0d6efd;
+    transform: scaleY(1.05) !important;
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    border-color: #0d6efd !important;
 }
 
 /* "Barcha nashrlar" button – no scaling, smooth color */
@@ -84,4 +84,9 @@ footer .d-flex i:hover {
 }
 .bg-gradient-primary .fs-5 {
     font-size: 1rem !important;
+}
+/* Hero buttons – restore original size */
+.bg-gradient-primary .btn {
+    font-size: 0.9rem !important;   /* smaller than default */
+    padding: 0.5rem 1rem !important; /* adjust padding if needed */
 }
