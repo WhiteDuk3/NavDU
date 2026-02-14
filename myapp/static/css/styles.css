@@ -71,6 +71,86 @@ footer .d-flex.gap-3 {
     justify-content: center !important;
 }
 
+/* ========== FINAL HOVER FIXES (place at bottom) ========== */
+
+/* 1. Remove all underlines/outlines from nav links and buttons */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.btn:hover,
+.btn:focus,
+.btn:active {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. Navbar: only hovered link moves up (others stay still) */
+.navbar-nav .nav-link {
+    transition: transform 0.2s ease !important;
+    transform: translateY(0) !important;
+}
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px) !important;
+}
+/* Ensure non-hovered links don't move */
+.navbar-nav .nav-link:not(:hover) {
+    transform: translateY(0) !important;
+}
+
+/* 3. "PDF ni o'qish" button – vertical scale only */
+.btn-outline-primary {
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+.btn-outline-primary:hover {
+    transform: scaleY(1.05) !important;
+    background-color: #0d6efd !important;  /* Bootstrap primary blue */
+    color: #fff !important;
+    border-color: #0d6efd !important;
+}
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    transform: scaleY(1.05) !important;
+}
+
+/* 4. "Barcha nashrlar" button – no scaling, smooth color */
+.btn-primary {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    transform: none !important;
+    background-color: #0b5ed7 !important;  /* slightly darker blue */
+    border-color: #0a58ca !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* 5. "Mualliflarga" and other light buttons – keep light hover (no blue) */
+.btn-light:hover,
+.btn-outline-light:hover {
+    transform: none !important;                     /* prevent any scaling */
+    background-color: #e2e6ea !important;           /* Bootstrap's default light hover */
+    border-color: #dae0e5 !important;
+    color: #212529 !important;                       /* keep dark text */
+}
+.btn-light:focus,
+.btn-outline-light:focus,
+.btn-light:active,
+.btn-outline-light:active {
+    transform: none !important;
+    background-color: #d3d9df !important;
+    border-color: #c8cdd3 !important;
+}
+
+/* 6. Ensure hero buttons (So'nggi sonlar, Mualliflarga) have no extra padding/font changes */
+.hero .btn,
+.bg-gradient-primary .btn,
+.btn-light,
+.btn-outline-light {
+    /* Reset to original Bootstrap values – no forced size changes */
+    padding: 0.375rem 0.75rem !important;   /* Bootstrap default */
+    font-size: 1rem !important;              /* Bootstrap default */
+}
 
 .menuback {
   -webkit-text-size-adjust: 100%;
