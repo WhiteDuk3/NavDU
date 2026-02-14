@@ -17,6 +17,14 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 
 
+def create_test_file(request):
+    test_dir = os.path.join(settings.MEDIA_ROOT, 'test')
+    os.makedirs(test_dir, exist_ok=True)
+    test_file = os.path.join(test_dir, 'test.txt')
+    with open(test_file, 'w') as f:
+        f.write('Hello, this is a test file.')
+    return HttpResponse(f"Test file created at {test_file}")
+
 def test_save(request):
     from django.core.files.base import ContentFile
     from django.core.files.storage import default_storage
@@ -134,6 +142,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
