@@ -16,6 +16,7 @@ from django.http import HttpResponse
 
 
 urlpatterns = [
+    path('media-status/', views.media_status, name='media_status'),
     path('debug/media/', views.list_media, name='list_media'),
     path('debug/', views.debug_db, name='debug_db'),
     path('list-media/', views.list_media, name='list_media'),
@@ -30,6 +31,7 @@ urlpatterns = [
     re_path(r'^media/(?P<file_path>.*)$', views.serve_media, name='serve_media'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 
