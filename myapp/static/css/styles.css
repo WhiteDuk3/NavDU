@@ -204,3 +204,31 @@ footer .d-flex i:hover {
     padding-left: 0;      /* removes any extra padding */
     max-width: calc(100% + 15px); /* prevents overflow */
 }
+
+
+.horizontal-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #0d2b66 #e9ecef;
+}
+.horizontal-scroll-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.horizontal-scroll-wrapper::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 10px;
+}
+.horizontal-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: #0d2b66;
+    border-radius: 10px;
+}
+.horizontal-scroll-wrapper .card {
+    width: 280px;
+    transition: transform 0.2s ease;
+}
+.horizontal-scroll-wrapper .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1) !important;
+}
