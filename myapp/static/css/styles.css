@@ -205,7 +205,6 @@ footer .d-flex i:hover {
     max-width: calc(100% + 15px); /* prevents overflow */
 }
 
-
 .horizontal-scroll-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -232,6 +231,7 @@ footer .d-flex i:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.1) !important;
 }
+
 /* Feature cards (used on About page) */
 .feature-card {
     background: #fff;
