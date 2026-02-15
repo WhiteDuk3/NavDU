@@ -56,11 +56,15 @@
     
 <!-- Latest Articles Grid -->
 <!-- ===== Latest Articles Grid ===== -->
+<!-- Latest Articles Grid -->
 <section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-6 fw-semibold">So'nggi nashrlar</h2>
-            <p class="text-secondary">Jurnalning eng so'nggi sonlari va maqolalari</p>
+    <div class="container">   <!-- ← this was missing -->
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="display-6 fw-semibold">So'nggi nashrlar</h2>
+                <p class="text-secondary">Jurnalning eng so'nggi sonlari va maqolalari</p>
+            </div>
+            <span class="text-secondary small">{{ pdf_files|length }} ta nashr</span>
         </div>
         <div class="row g-4">
             {% for pdf in pdf_files %}
@@ -104,8 +108,9 @@
         <div class="text-center mt-5">
             <a href="/arxiv" class="btn btn-primary px-5 py-2">Barcha nashrlar →</a>
         </div>
-    </div>
+    </div>   <!-- ← close container -->
 </section>
+    
 <!-- Footer -->
 <footer class="bg-dark text-white-50 py-5">
     <div class="container">
