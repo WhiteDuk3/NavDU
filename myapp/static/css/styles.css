@@ -165,3 +165,8 @@ footer .d-flex i:hover {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
 }
+/* Abstract text – slightly smaller than body */
+.abstract-text {
+    font-size: 0.95rem;
+    color: #4a5568; /* optional: softer gray */
+}
