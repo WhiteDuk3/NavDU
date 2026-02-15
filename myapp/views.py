@@ -95,13 +95,11 @@ class IndexView(TemplateView):
         context['pdf_files'] = all_pdfs[:6]
         return context
 
-
 class ArxivView(TemplateView):
     template_name = 'arxiv.html'
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pdf_files'] = PDFFile.objects.all()
+        context['pdf_files'] = PDFFile.objects.all().order_by('-date')  # or '-id'
         return context
 
 
@@ -119,5 +117,6 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
