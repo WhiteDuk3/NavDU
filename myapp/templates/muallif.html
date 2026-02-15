@@ -1,97 +1,204 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Email with SMTP.js</title>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/ABeeZee.css">
-    <link rel="stylesheet" href="../static/css/Abyssinica%20SIL.css">
-    <link rel="stylesheet" href="../static/css/Alegreya%20SC.css">
-    <link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/css/aboutus.css">
-    <link rel="stylesheet" href="../static/css/Bold-BS4-Footer-Simple.css">
-    <link rel="stylesheet" href="../static/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-    <link rel="stylesheet" href="../static/css/Features-Cards-icons.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple-1.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple.css">
-    <link rel="stylesheet" href="../static/css/Navigation-Menu.css">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/tahririyat.css">
-    <link rel="stylesheet" href="../static/css/talab.css">
+    <title>Mualliflarga – NavDU Axborotnomasi</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header id="tepajonim" style="margin-top: 0px;padding-top: 8px;">
-        <div class="visible" id="top" style="margin-left: -11px;" data-bs-target="#site-navigation" data-bs-smooth-scroll="true"><a href="/" style="padding-top: 0px;">&nbsp;<img src="../static/img/voiy%20pde.jpg" width="310" height="98" style="padding-top: 0px;margin-top: 1px;padding-left: 2px;margin-left: 224px;"></a></div>
-        <div class="menuback">
-            <div class="menunofull">
-                <nav id="site-navigation" class="primary-navigation" aria-label="Primary menu" style="padding-top: 10px;margin-left: 6px;">
-                    <div class="primary-menu-container">
-                        <ul id="primary-menu-list" class="menu-wrapper">
-                            <li id="menu-item-1733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1733"><a href="/about" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">BIZ HAQIMIZDA</span></a></li>
-                            <li id="menu-item-1301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1301"><a href="/tahririyat" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">TAHRIRIYAT JAMOASI</span></a></li>
-                            <li id="menu-item-1764" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1764"><a href="/talablar" data-ps2id-api="true" style="font-size: 16pz;"><span style="color: var(--primary-nav--color-link-hover);">NASHR QILISH SHARTLARI</span></a></li>
-                            <li id="menu-item-1298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298"><a href="/arxiv" data-ps2id-api="true" style="font-size: 16pz;">ARXIV</a></li>
-                            <li id="menu-item-1262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1262"><a href="/muallif" data-ps2id-api="true" style="font-size: 16pz;text-decoration: underline;"><span style="color: var(--primary-nav--color-link-hover); background-color: transparent;">MUALLIF PROFILI</span><br><br></a></li>
-                            <li id="menu-item-1737" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1737"></li>
-                            <li id="menu-item-1251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1251"></li>
-                            <li id="menu-item-1806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1806"></li>
-                            <li id="menu-item-1289" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1289"></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="submenu">
-            <div class="subnofull">
-                <div class="issn"><span>Onlayn ISSN 2520-2480 Chop etish ISSN 2520-6990</span></div>
-            </div>
-        </div>
-    </header>
-    <div id="okansila"></div>
-    <p class="text-center text-sm-start text-md-start text-lg-start text-xl-center text-xxl-center" id="ogoh" style="margin-left: 5px;font-size: 16px;font-family: ABeeZee, sans-serif;color: var(--bs-body-color);text-align: right;margin-bottom: 22px;margin-top: 28px;"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">Agar bizdan xabarlar bo'lmasa, "spam" jildini tekshiring, agar unga xabar tushgan bo'lsa, "spam emas" tugmasini bosib qo'ying.</span><br>Biz qisqa vaqt ichida siz bilan bog'lanamiz.Agar biz siz bilan bog'lanmasak&nbsp;journal_nspi@mail.ru manziliga yozing<br><br></p>
-    <div class="text-center" id="formv2">
-        <div class="container-fluid text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center cont">
-            <h1>Material yuborish blankasi</h1>
-            <hr>
-            <form id="contactForm-1" method="post" action="/email_handler/" enctype="multipart/form-data" style="margin-left: 0px;">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="successfail-1"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-6" id="message-1">
-                        <h2 class="h4"><i class="fa fa-envelope"></i>&nbsp;<small><small class="required-input">&nbsp;(*majburiy)</small></small></h2>
-                        <div class="form-group mb-3"><label class="form-label" for="from-name">FIO</label><span class="required-input">*</span>
-                            <div class="input-group"><span class="input-group-text"><i class="fa fa-user-o"></i></span><input class="form-control" type="text" id="from-name-1" name="name" required="" placeholder="Familya ism sharif" minlength="10"></div>
-                        </div>
-                        <div class="form-group mb-3"><label class="form-label" for="from-email">E-pochta</label><span class="required-input">*</span>
-                            <div class="input-group"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span><input class="form-control" type="email" id="from-email-1" name="email" required="" placeholder="Elektron pochta"></div>
-                        </div>
-                        <div class="form-group mb-3"><label class="form-label" for="subject">Mavzu</label><span class="required-input">*</span>
-                            <div class="input-group"><span class="input-group-text"><i class="fa fa-pencil"></i></span><input class="form-control" type="text" id="subject-1" name="subject" required="" placeholder="Mavzu"></div>
-                        </div>
-                        <div class="form-group mb-3"><label class="form-label" for="message">Telefon raqami</label><span class="required-input">*</span>
-                            <div class="input-group"><span class="input-group-text"><i class="fa fa-comment"></i></span><textarea class="form-control" id="message-1" name="tel" required="" placeholder="Telefon raqam"></textarea></div>
-                        </div>
-                        <div class="form-group mb-3"><label class="form-label" for="attachment">Maqola</label>
-                            <div class="input-group"><span class="input-group-text"><i class="fa fa-paperclip"></i></span><input class="form-control" type="file" id="attachment-1" name="file"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group d-flex justify-content-center"><button class="btn btn-primary" type="submit">Yuborish</button></div>
-                    </div>
-                </div>
-            </form>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/voiy pde.jpg' %}" alt="NavDU" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/about">Biz haqimizda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tahririyat">Tahririyat jamoasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="/talablar">Nashr qilish shartlari</a></li>
+                <li class="nav-item"><a class="nav-link" href="/arxiv">Arxiv</a></li>
+                <li class="nav-item"><a class="nav-link" href="/muallif">Mualliflarga</a></li>
+            </ul>
         </div>
     </div>
-    <script>
-    </script>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-4">
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h1 class="display-5 fw-bold mb-3">Mualliflarga</h1>
+                <p class="lead mb-0">Maqola topshirish boʻyicha qoʻllanma va forma</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- Guidelines Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4 text-center">
+                        <i class="fas fa-file-alt fa-3x mb-3" style="color: #0d2b66;"></i>
+                        <h3 class="h5 fw-semibold mb-3">Maqola formati</h3>
+                        <p class="text-secondary small">PDF, DOC yoki LaTeX formatida topshirish mumkin. Maksimal hajmi: 25 MB.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4 text-center">
+                        <i class="fas fa-sitemap fa-3x mb-3" style="color: #0d2b66;"></i>
+                        <h3 class="h5 fw-semibold mb-3">Tuzilishi</h3>
+                        <p class="text-secondary small">IMRAD: Kirish, Metodlar, Natijalar, Muhokama, Xulosa va Adabiyotlar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4 text-center">
+                        <i class="fas fa-users fa-3x mb-3" style="color: #0d2b66;"></i>
+                        <h3 class="h5 fw-semibold mb-3">Taqriz jarayoni</h3>
+                        <p class="text-secondary small">Ikki tomonlama anonim taqriz. Oʻrtacha 4-6 hafta.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Form -->
+            <div class="bg-white rounded shadow-sm p-4 p-md-5 mb-5">
+                <h2 class="h3 fw-bold mb-4">Maqola topshirish formasi</h2>
+
+                <form id="submissionForm" method="post" action="/email_handler/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="from-name" class="form-label fw-semibold">F.I.O. <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-user text-secondary"></i></span>
+                                <input type="text" class="form-control" id="from-name" name="name" required placeholder="Toʻliq ismingiz">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="from-email" class="form-label fw-semibold">E-pochta <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-envelope text-secondary"></i></span>
+                                <input type="email" class="form-control" id="from-email" name="email" required placeholder="example@domain.uz">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="subject" class="form-label fw-semibold">Mavzu <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-pencil text-secondary"></i></span>
+                                <input type="text" class="form-control" id="subject" name="subject" required placeholder="Maqola mavzusi">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label fw-semibold">Telefon raqami <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-phone text-secondary"></i></span>
+                                <input type="text" class="form-control" id="phone" name="tel" required placeholder="+998 xx xxx xx xx">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="attachment" class="form-label fw-semibold">Maqola fayli (PDF, DOC, LaTeX)</label>
+                            <div class="border-2 border-dashed rounded p-4 text-center bg-light" style="border-color: #dee2e6;">
+                                <i class="fas fa-cloud-upload-alt fa-2x text-secondary mb-2"></i>
+                                <p class="mb-1 text-secondary">Faylni sudrab yoki tanlash uchun bosing</p>
+                                <p class="small text-muted">Maksimal hajmi: 25 MB</p>
+                                <input type="file" class="form-control" id="attachment" name="file" accept=".pdf,.doc,.docx,.tex">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agree" required>
+                                <label class="form-check-label small text-secondary" for="agree">
+                                    Maqola original va boshqa nashrlarda chop etilmaganligini, barcha mualliflar rozi ekanligini tasdiqlayman.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary px-5 py-2">Yuborish</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="bg-light p-4 rounded">
+                <h3 class="h5 fw-semibold mb-2">Yordam kerakmi?</h3>
+                <p class="small text-secondary mb-0">
+                    Agar savollaringiz boʻlsa, tahririyat bilan bogʻlaning:
+                    <a href="mailto:journal@navdu.uz" class="text-primary">journal@navdu.uz</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white-50 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">NavDU Axborotnomasi</h5>
+                <p class="small">Ilmiy jurnal • 2025</p>
+                <p class="small">Onlayn ISSN 2520-2480<br>Chop etish ISSN 2520-6990</p>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h6 class="text-white">Sahifalar</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/about" class="text-white-50 text-decoration-none">Biz haqimizda</a></li>
+                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat</a></li>
+                    <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
+                    <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
+                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Mualliflarga</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Bog'lanish</h6>
+                <ul class="list-unstyled small">
+                    <li><i class="fas fa-envelope me-2"></i> journal@navdu.uz</li>
+                    <li><i class="fas fa-phone me-2"></i> +998 78 113-44-54</li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Ijtimoiy tarmoqlar</h6>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-top border-secondary pt-4 mt-2 text-center small">
+            <p>© 2024 Navoiy davlat universiteti. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Optional: Success message handling (if you want to avoid redirect) -->
+<script>
+    const form = document.getElementById('submissionForm');
+    form.addEventListener('submit', function(e) {
+        // If you want to handle success without redirect, you'd need AJAX.
+        // For now, we keep default form submission which will go to /email_handler/ and show "Success".
+        // You can later enhance this.
+    });
+</script>
 </body>
 </html>
