@@ -1,116 +1,151 @@
+{% load static %}
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
+<html lang="uz">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>About Us - Navoiy State University</title>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/ABeeZee.css">
-    <link rel="stylesheet" href="../static/css/Abyssinica%20SIL.css">
-    <link rel="stylesheet" href="../static/css/Alegreya%20SC.css">
-    <link rel="stylesheet" href="../static/css/aboutus.css">
-    <link rel="stylesheet" href="../static/css/Bold-BS4-Footer-Simple.css">
-    <link rel="stylesheet" href="../static/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-    <link rel="stylesheet" href="../static/css/Features-Cards-icons.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple-1.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple-navbar---apple.css">
-    <link rel="stylesheet" href="../static/css/Navbar---Apple.css">
-    <link rel="stylesheet" href="../static/css/Navigation-Menu.css">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/tahririyat.css">
-    <link rel="stylesheet" href="../static/css/talab.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biz haqimizda – NavDU Axborotnomasi</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <header id="tepajonim" style="margin-top: 0px;padding-top: 8px;">
-        <div class="visible" id="top" style="margin-left: -11px;" data-bs-target="#site-navigation" data-bs-smooth-scroll="true">
-            <a href="/" style="padding-top: 0px;">
-                &nbsp;<img src="../static/img/voiy%20pde.jpg" width="310" height="98" style="padding-top: 0px;margin-top: 1px;padding-left: 2px;margin-left: 224px;">
-            </a>
-        </div>
-        <div class="menuback">
-            <div class="menunofull">
-                <nav id="site-navigation" class="primary-navigation" aria-label="Primary menu" style="padding-top: 10px;margin-left: 6px;">
-                    <div class="primary-menu-container">
-                        <ul id="primary-menu-list" class="menu-wrapper">
-                            <li id="menu-item-1733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1733">
-                                <a href="/about" data-ps2id-api="true" style="font-size: 16px;text-decoration: underline;">
-                                    <span style="color: var(--primary-nav--color-link-hover);">BIZ HAQIMIZDA</span>
-                                </a>
-                            </li>
-                            <li id="menu-item-11" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1301">
-                                <a href="/tahririyat" data-ps2id-api="true" style="font-size: 16px;">
-                                    <span style="color: var(--primary-nav--color-link-hover);">TAHRIRIYAT JAMOASI</span>
-                                </a>
-                            </li>
-                            <li id="menu-item-12" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1764">
-                                <a href="/talablar" data-ps2id-api="true" style="font-size: 16px;">
-                                    <span style="color: var(--primary-nav--color-link-hover);">NASHR QILISH SHARTLARI</span>
-                                </a>
-                            </li>
-                            <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298">
-                                <a href="/arxiv" data-ps2id-api="true" style="font-size: 16px;">ARXIV</a>
-                            </li>
-                            <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1262">
-                                <a href="/muallif" data-ps2id-api="true" style="font-size: 16px;">
-                                    <span style="color: var(--primary-nav--color-link-hover); background-color: transparent;">MUALLIF PROFILI</span><br><br>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="submenu">
-            <div class="subnofull">
-                <div class="issn"><span>Onlayn ISSN 2520-2480 Chop etish ISSN 2520-6990</span></div>
-            </div>
-        </div>
-    </header>
 
-    <div id="okansila"></div>
-
+<!-- Navigation (same as homepage) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
-        <h1>NAVOIY DAVLAT UNIVERSITETI AXBOROTNOMASI</h1>
-        <div class="section">
-            <p>O‘zbekiston Respublikasi Oliy ta’lim, fan va innovatsiyalar vazirligi tasarrufidagi Navoiy davlat universiteti Kengashining 2019 yil 28 fevraldagi 7-sonli yig‘ilish bayonnomasi asosida tashkil etilgan. Jurnal Nizomi tahririyat a’zolari tasdiqlangan. Jurnal O‘zbekiston Respublikasi Prezidenti Administratsiyasi huzuridagi Axborot va ommaviy kommunikatsiyalar agentligi tomonidan berilgan Ommaviy axborot vositasi davlat ro‘yxatidan o‘tkazilganligi to‘g‘risida №1090 raqamli GUVOHNOMAga ega.</p>
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/voiy pde.jpg' %}" alt="NavDU" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/about">Biz haqimizda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tahririyat">Tahririyat jamoasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="/talablar">Nashr qilish shartlari</a></li>
+                <li class="nav-item"><a class="nav-link" href="/arxiv">Arxiv</a></li>
+                <li class="nav-item"><a class="nav-link" href="/muallif">Muallif profili</a></li>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <div class="language-section">
-            <div>
-                <h2>O'zbekcha</h2>
-                <p>Jurnal nomi: "NAVOIY DAVLAT UNIVERSITETI  AXBOROTNOMASI"</p> <p>Tarqatish shakli: elektron jurnal</p> <p>Tillar: o‘zbek, rus, ingliz</p> <p>Muassislar: Navoiy davlat universiteti</p> <p>Ixtisoslashuvi: ijtimoiy-gumanitar va aniq-tabiiy fanlarga oid ilmiy-tadqiqotlar hamda ilg‘or pedagogik va innovatsion texnologiyalar</p> <p>Jurnalning asosiy vazifasi xalqaro va mintaqalararo ilmiy muassasalar, jamoat tashkilotlari va universitetlar o‘rtasidagi hamkorlikni mustahkamlashdir. So‘nggi yillarda ilmiy tafakkurni asrab-avaylash va rivojlantirish, turli mamlakatlar intellektual salohiyati o‘rtasidagi muloqotni mustahkamlash hamkasblarimiz va butun universitetning asosiy maqsadi hisoblanadi.</p> <p>Tahririyat manzili: 210100 Navoiy viloyati, Navoiy shahri, Ibn Sino ko‘chasi, 45-uy</p>
+<!-- Hero Section (smaller version) -->
+<section class="bg-gradient-primary text-white py-4">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">Biz haqimizda</h1>
+                <p class="lead mb-0">Navoiy davlat universitetining ilmiy jurnali</p>
             </div>
+        </div>
+    </div>
+</section>
 
-            <div>
-                <h2>Русский</h2>
-                <p>Журнал создан на основании протокола заседания №7 от 28 февраля 2019 года Совета Навоийского государственного университета Министерства высшего образования, науки и инноваций Республики Узбекистан. Утверждается Положение о журнале, редакционный состав. Журнал имеет Свидетельство № 1090 о государственной регистрации средств массовой информации, выданное Агентством информации и массовых коммуникаций при Администрации Президента Республики Узбекистан.</p>
-                <p>Название журнала: «НАУЧНО-МЕТОДИЧЕСКИЙ ВЕСТНИК НАВОЙСКОГО ГОСУДАРСТВЕННОГО УНИВЕРСИТЕТА»</p>
-                <p>Форма распространения: электронный журнал</p>
-                <p>Языки: Узбекский, Русский, Английский</p>
-                <p>Учредители: Навоийский государственный университет</p>
-                <p>Специализация: научно-исследовательские работы по социально-гуманитарным и точно-естественным наукам, а также передовым педагогическим и инновационным технологиям</p>
-                <p>Основная миссия журнала – укрепление сотрудничества между международными и межрегиональными научными учреждениями, общественными организациями и университетами. Сохранение и развитие научной мысли, укрепление диалога между интеллектуальными потенциалами разных стран – основная цель наших коллег и всего университета в целом.</p>
-            </div>
-
-            <div>
-                <h2>English</h2>
-                <p>The journal was created on the basis of the minutes of meeting No. 7 of February 28, 2019, of the Council of the Navoi State University of the Ministry of Higher Education, Science and Innovation of the Republic of Uzbekistan. The Regulations on the journal and the editorial staff are approved. The magazine has Certificate No. 1090 of state registration of mass media issued by the Agency of Information and Mass Communications under the Administration of the President of the Republic of Uzbekistan.</p>
-                <p>Journal name: "SCIENTIFIC AND METHODICAL BULLETIN OF NAVOI STATE UNIVERSITY"</p>
-                <p>Distribution form: electronic journal</p>
-                <p>Languages: Uzbek, Russian, English</p>
-                <p>Founders: Navoi State University</p>
-                <p>Specialization: research work in the social humanities and exact natural sciences, as well as advanced pedagogical and innovative technologies</p>
-                <p>The main mission of the journal is to strengthen cooperation between international and interregional scientific institutions, public organizations, and universities. Retention and development of scientific thought and strengthening dialogue between intellectual potentials of different countries is the main goal of our colleagues and the entire university.</p>
+<!-- Main Content -->
+<main class="container py-5">
+    <!-- Mission / Introduction (from original content) -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="bg-light p-5 rounded mb-5" style="border-left: 6px solid #0d2b66;">
+                <p class="fs-5">{{ about_text|default:"O‘zbekiston Respublikasi Oliy ta’lim, fan va innovatsiyalar vazirligi tasarrufidagi Navoiy davlat universiteti Kengashining 2019 yil 28 fevraldagi 7-sonli yig‘ilish bayonnomasi asosida tashkil etilgan. Jurnal Nizomi tahririyat a’zolari tasdiqlangan. Jurnal O‘zbekiston Respublikasi Prezidenti Administratsiyasi huzuridagi Axborot va ommaviy kommunikatsiyalar agentligi tomonidan berilgan Ommaviy axborot vositasi davlat ro‘yxatidan o‘tkazilganligi to‘g‘risida №1090 raqamli GUVOHNOMAga ega." }}</p>
             </div>
         </div>
     </div>
 
-    <div id="okansila"></div>
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../static/js/Contact-Form-v2-Modal--Full-with-Google-Map-scripts.js"></script>
-    <script src="../static/js/Navbar---Apple-navbar---apple.js"></script>
-</body>
+    <!-- Three‑language info (as cards) -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <h3 class="h4 fw-semibold mb-3" style="color: #0d2b66;">O'zbekcha</h3>
+                <p><strong>Jurnal nomi:</strong> "NAVOIY DAVLAT UNIVERSITETI AXBOROTNOMASI"</p>
+                <p><strong>Tarqatish shakli:</strong> elektron jurnal</p>
+                <p><strong>Tillar:</strong> o‘zbek, rus, ingliz</p>
+                <p><strong>Muassislar:</strong> Navoiy davlat universiteti</p>
+                <p><strong>Ixtisoslashuvi:</strong> ijtimoiy-gumanitar va aniq-tabiiy fanlar</p>
+                <p class="mb-0"><strong>Manzil:</strong> 210100 Navoiy viloyati, Navoiy shahri, Ibn Sino ko‘chasi, 45-uy</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <h3 class="h4 fw-semibold mb-3" style="color: #0d2b66;">Русский</h3>
+                <p><strong>Название журнала:</strong> «НАУЧНО-МЕТОДИЧЕСКИЙ ВЕСТНИК НАВОЙСКОГО ГОСУДАРСТВЕННОГО УНИВЕРСИТЕТА»</p>
+                <p><strong>Форма распространения:</strong> электронный журнал</p>
+                <p><strong>Языки:</strong> Узбекский, Русский, Английский</p>
+                <p><strong>Учредители:</strong> Навоийский государственный университет</p>
+                <p><strong>Специализация:</strong> научно-исследовательские работы по социально-гуманитарным и точно-естественным наукам</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <h3 class="h4 fw-semibold mb-3" style="color: #0d2b66;">English</h3>
+                <p><strong>Journal name:</strong> "SCIENTIFIC AND METHODICAL BULLETIN OF NAVOI STATE UNIVERSITY"</p>
+                <p><strong>Distribution form:</strong> electronic journal</p>
+                <p><strong>Languages:</strong> Uzbek, Russian, English</p>
+                <p><strong>Founders:</strong> Navoi State University</p>
+                <p><strong>Specialization:</strong> research in social humanities and exact natural sciences</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Extended description (from original) -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="bg-white p-5 rounded shadow-sm">
+                <p class="text-secondary">{{ about_long|default:"Jurnalning asosiy vazifasi xalqaro va mintaqalararo ilmiy muassasalar, jamoat tashkilotlari va universitetlar o‘rtasidagi hamkorlikni mustahkamlashdir. So‘nggi yillarda ilmiy tafakkurni asrab-avaylash va rivojlantirish, turli mamlakatlar intellektual salohiyati o‘rtasidagi muloqotni mustahkamlash hamkasblarimiz va butun universitetning asosiy maqsadi hisoblanadi." }}</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer (same as homepage) -->
+<footer class="bg-dark text-white-50 py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">NavDU Axborotnomasi</h5>
+                <p class="small">Ilmiy jurnal • 2025</p>
+                <p class="small">Onlayn ISSN 2520-2480<br>Chop etish ISSN 2520-6990</p>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h6 class="text-white">Sahifalar</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/about" class="text-white-50 text-decoration-none">Biz haqimizda</a></li>
+                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat</a></li>
+                    <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
+                    <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
+                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Muallif profili</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Bog'lanish</h6>
+                <ul class="list-unstyled small">
+                    <li><i class="fas fa-envelope me-2"></i> journal@navdu.uz</li>
+                    <li><i class="fas fa-phone me-2"></i> +998 78 113-44-54</li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Ijtimoiy tarmoqlar</h6>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-top border-secondary pt-4 mt-2 text-center small">
+            <p>© 2024 Navoiy davlat universiteti. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
