@@ -7,17 +7,16 @@
     <title>NavDU Axborotnomasi</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <!-- Your custom CSS (optional overrides) -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <!-- Font Awesome for icons (optional, for search/filter later) -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- ===== Navigation (new design, adapted to Bootstrap) ===== -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
-        <!-- Logo / Brand -->
         <a class="navbar-brand" href="/">
             <img src="{% static 'img/voiy pde.jpg' %}" alt="NavDU" height="50">
         </a>
@@ -27,17 +26,17 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/about">BIZ HAQIMIZDA</a></li>
-                <li class="nav-item"><a class="nav-link" href="/tahririyat">TAHRIRIYAT JAMOASI</a></li>
-                <li class="nav-item"><a class="nav-link" href="/talablar">NASHR QILISH SHARTLARI</a></li>
-                <li class="nav-item"><a class="nav-link" href="/arxiv">ARXIV</a></li>
-                <li class="nav-item"><a class="nav-link" href="/muallif">MUALLIF PROFILI</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">Biz haqimizda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tahririyat">Tahririyat jamoasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="/talablar">Nashr qilish shartlari</a></li>
+                <li class="nav-item"><a class="nav-link" href="/arxiv">Arxiv</a></li>
+                <li class="nav-item"><a class="nav-link" href="/muallif">Muallif profili</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- ===== Hero Section (blue gradient) ===== -->
+<!-- Hero Section -->
 <section class="bg-gradient-primary text-white py-5">
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -54,8 +53,7 @@
     </div>
 </section>
 
-<!-- ===== Latest Articles Grid (from database) ===== -->
-<!-- ===== Latest Articles Grid (Figma style) ===== -->
+<!-- Latest Articles Grid -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
@@ -72,7 +70,6 @@
                         </div>
                         <div class="article-content">
                             <h5 class="article-title">{{ pdf.name }}</h5>
-                            <!-- Optional: add author or date if you have them in your model -->
                         </div>
                     </div>
                 </a>
@@ -89,37 +86,7 @@
     </div>
 </section>
 
-<!-- ===== Features / Values (adapted from original) ===== -->
-<!-- ===== Features / Values (updated cards) ===== -->
-<!-- <section class="py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <img src="{% static 'img/simple-s.png' %}" alt="Professionalizm" height="80" class="mb-3">
-                    <h4 class="fw-semibold">Professionalizm</h4>
-                    <p class="text-secondary">Har kimga individual yondashish – Kafolatlar – Maxfiylik – Etika – O'z vaqtidalik – Halollik – Iqtisodiyot – Iqtisodiylik – Barqarorlik</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <img src="{% static 'img/professional-s.png' %}" alt="Samaradorlik" height="80" class="mb-3">
-                    <h4 class="fw-semibold">Samaradorlik</h4>
-                    <p class="text-secondary">Konferentsiyalarimizning aksariyati ham ishtirokchilar, ham umuman o'quvchilar uchun ilmiy salohiyatni oshirish va martaba natijalariga erishishga yordam beradi.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <img src="{% static 'img/result-s.png' %}" alt="Oddiylik" height="80" class="mb-3">
-                    <h4 class="fw-semibold">Oddiylik</h4>
-                    <p class="text-secondary">Muloqot qilishning oson usuli, ishni topshirish. Barcha yuzaga kelishi mumkin bo'lgan savollarga yordam bering.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- ===== Footer ===== -->
+<!-- Footer -->
 <footer class="bg-dark text-white-50 py-5">
     <div class="container">
         <div class="row">
