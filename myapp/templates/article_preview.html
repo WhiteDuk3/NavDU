@@ -80,8 +80,10 @@
             {% endif %}
 
             <!-- Full text -->
+            <!-- Full text (flush with blue line) -->
             {% if article.content %}
-                <div class="article-content">
+                <div class="content-flush-left">
+                    <h2 class="h4 fw-semibold mb-3">Kirish</h2>
                     {{ article.content|linebreaks }}
                 </div>
             {% endif %}
