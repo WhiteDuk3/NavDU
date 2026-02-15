@@ -100,11 +100,35 @@ class ArxivView(TemplateView):
     template_name = 'arxiv.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Get all PDFs, order by date
         all_pdfs = PDFFile.objects.all().order_by('-date')
+        
+        # Filtering
+        search_query = self.request.GET.get('q', '')
+        category = self.request.GET.get('category', '')
+        year = self.request.GET.get('year', '')
+        
+        if search_query:
+            all_pdfs = all_pdfs.filter(name__icontains=search_query) | \
+                       all_pdfs.filter(abstract__icontains=search_query) | \
+                       all_pdfs.filter(authors__icontains=search_query)
+        if category and category != 'all':
+            all_pdfs = all_pdfs.filter(category__iexact=category)
+        if year and year != 'all':
+            all_pdfs = all_pdfs.filter(date__year=year)
+        
+        # Get unique categories and years for filter dropdowns
+        categories = PDFFile.objects.exclude(category__isnull=True).exclude(category='').values_list('category', flat=True).distinct().order_by('category')
+        years = PDFFile.objects.exclude(date__isnull=True).dates('date', 'year').distinct()
+        
         context['pdf_files'] = all_pdfs
-        context['recent_pdfs'] = all_pdfs[:6]  # latest 6 for scroller
+        context['recent_pdfs'] = PDFFile.objects.all().order_by('-date')[:6]
+        context['categories'] = categories
+        context['years'] = [d.year for d in years]
+        context['selected_category'] = category
+        context['selected_year'] = year
+        context['search_query'] = search_query
         return context
-
 
 class AboutView(TemplateView):
     template_name = 'aboutus.html'
@@ -120,6 +144,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
