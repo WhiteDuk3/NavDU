@@ -170,3 +170,9 @@ footer .d-flex i:hover {
     font-size: 0.95rem;
     color: #4a5568; /* optional: softer gray */
 }
+/* Flush left content (aligns with blue line) */
+.flush-left {
+    margin-left: -15px;  /* pulls content to column edge */
+    padding-left: 0;      /* removes any extra padding */
+    max-width: calc(100% + 15px); /* prevents overflow */
+}
