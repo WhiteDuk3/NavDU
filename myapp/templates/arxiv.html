@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Ensure year dropdown text doesn't wrap */
-        #year {
-            min-width: 120px;
+        /* Ensure dropdowns have enough width */
+        #category, #year {
+            min-width: 130px;
         }
-        /* Optional: make the filter button fit better */
+        /* Make filter button text nowrap */
         .btn-filter {
             white-space: nowrap;
         }
@@ -62,7 +62,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <form method="get" class="row g-3 align-items-end">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="search" class="form-label small text-muted mb-1">Qidirish</label>
                         <input type="text" class="form-control" id="search" name="q" placeholder="Sarlavha, annotatsiya yoki muallif..." value="{{ search_query }}">
                     </div>
@@ -75,7 +75,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="year" class="form-label small text-muted mb-1">Yil</label>
                         <select class="form-select" id="year" name="year">
                             <option value="all">Barcha yillar</option>
@@ -145,7 +145,7 @@
     </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer (no top margin) -->
 <footer class="bg-dark text-white-50 py-5">
     <div class="container">
         <div class="row">
