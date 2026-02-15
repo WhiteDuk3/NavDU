@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <!-- Font Awesome -->
+    <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -36,7 +36,7 @@
     </div>
 </nav>
 
-<!-- Hero Section (smaller version) -->
+<!-- Hero Section -->
 <section class="bg-gradient-primary text-white py-4">
     <div class="container py-3">
         <div class="row">
@@ -50,16 +50,58 @@
 
 <!-- Main Content -->
 <main class="container py-5">
-    <!-- Mission / Introduction (from original content) -->
-    <div class="row justify-content-center">
+    <!-- Mission Statement (in Uzbek) -->
+    <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
-            <div class="bg-light p-5 rounded mb-5" style="border-left: 6px solid #0d2b66;">
-                <p class="fs-5">{{ about_text|default:"O‘zbekiston Respublikasi Oliy ta’lim, fan va innovatsiyalar vazirligi tasarrufidagi Navoiy davlat universiteti Kengashining 2019 yil 28 fevraldagi 7-sonli yig‘ilish bayonnomasi asosida tashkil etilgan. Jurnal Nizomi tahririyat a’zolari tasdiqlangan. Jurnal O‘zbekiston Respublikasi Prezidenti Administratsiyasi huzuridagi Axborot va ommaviy kommunikatsiyalar agentligi tomonidan berilgan Ommaviy axborot vositasi davlat ro‘yxatidan o‘tkazilganligi to‘g‘risida №1090 raqamli GUVOHNOMAga ega." }}</p>
+            <div class="bg-white p-5 rounded shadow-sm">
+                <h2 class="h2 fw-bold mb-4" style="color: #0d2b66;">Bizning vazifamiz</h2>
+                <p class="fs-5 text-secondary mb-4">
+                    Navoiy davlat universiteti axborotnomasi barcha ilmiy yo‘nalishlarda yuqori sifatli, 
+                    ekspertlar tomonidan ko‘rib chiqilgan tadqiqotlarni nashr etishga bag‘ishlangan. 
+                    Biz ochiq bilim almashinuvi insoniyat tushunchasini rivojlantirish va innovatsiyalarni 
+                    rag‘batlantirishda muhim rol o‘ynashiga ishonamiz.
+                </p>
+                <p class="fs-5 text-secondary">
+                    2019-yilda tashkil etilgan jurnalimiz butun dunyo bo‘ylab tadqiqotchilar o‘z kashfiyotlari 
+                    bilan o‘rtoqlashishlari va global ilmiy hamjamiyatga hissa qo‘shishlari uchun ishonchli 
+                    platformaga aylandi.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Three‑language info (as cards) -->
+    <!-- Feature Cards (Professionalizm, Samaradorlik, Oddiylik) with new icons -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="feature-card text-center h-100">
+                <i class="fas fa-handshake fa-3x mb-3" style="color: #0d2b66;"></i>
+                <h3 class="h4 fw-semibold mb-3">Professionalizm</h3>
+                <p class="text-secondary">
+                    Har bir nashr yuqori ilmiy standartlarga javob berishi uchun qatʼiy ekspertizadan o‘tkaziladi.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card text-center h-100">
+                <i class="fas fa-chart-line fa-3x mb-3" style="color: #0d2b66;"></i>
+                <h3 class="h4 fw-semibold mb-3">Samaradorlik</h3>
+                <p class="text-secondary">
+                    Maqolalar tez va samarali ko‘rib chiqilib, ilmiy jamoatchilikka tezkor yetkaziladi.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card text-center h-100">
+                <i class="fas fa-lightbulb fa-3x mb-3" style="color: #0d2b66;"></i>
+                <h3 class="h4 fw-semibold mb-3">Oddiylik</h3>
+                <p class="text-secondary">
+                    Mualliflar uchun qulay va tushunarli jarayon – topshirishdan nashrgacha.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three‑language info cards (from original) -->
     <div class="row g-4 mb-5">
         <div class="col-md-4">
             <div class="feature-card h-100">
@@ -94,11 +136,35 @@
         </div>
     </div>
 
-    <!-- Extended description (from original) -->
+   <!-- Optional Stats (you can replace numbers later) -->
+    <!-- <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-4">
+            <div class="display-4 fw-bold text-primary">500+</div>
+            <p class="text-secondary">Nashr qilingan maqolalar</p>
+        </div>
+        <div class="col-md-4">
+            <div class="display-4 fw-bold text-primary">30+</div>
+            <p class="text-secondary">Mamlakatlar</p>
+        </div>
+        <div class="col-md-4">
+            <div class="display-4 fw-bold text-primary">10+</div>
+            <p class="text-secondary">Yillik tajriba</p>
+        </div>
+    </div> -->
+
+    <!-- Call to Action: Ready to Submit? -->
     <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="bg-white p-5 rounded shadow-sm">
-                <p class="text-secondary">{{ about_long|default:"Jurnalning asosiy vazifasi xalqaro va mintaqalararo ilmiy muassasalar, jamoat tashkilotlari va universitetlar o‘rtasidagi hamkorlikni mustahkamlashdir. So‘nggi yillarda ilmiy tafakkurni asrab-avaylash va rivojlantirish, turli mamlakatlar intellektual salohiyati o‘rtasidagi muloqotni mustahkamlash hamkasblarimiz va butun universitetning asosiy maqsadi hisoblanadi." }}</p>
+        <div class="col-lg-8">
+            <div class="bg-light p-5 rounded text-center">
+                <h2 class="h2 fw-bold mb-4">Tadqiqotingizni yuborishga tayyormisiz?</h2>
+                <p class="fs-5 text-secondary mb-4">
+                    Minglab tadqiqotchilar qatoriga qo‘shiling. Bizning soddalashtirilgan topshirish jarayonimiz 
+                    natijalaringizni dunyo bilan baham ko‘rishni osonlashtiradi.
+                </p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="/talablar" class="btn btn-primary btn-lg px-4 py-2">Maqola yuborish</a>
+                    <a href="/arxiv" class="btn btn-outline-primary btn-lg px-4 py-2">Barcha nashrlar</a>
+                </div>
             </div>
         </div>
     </div>
