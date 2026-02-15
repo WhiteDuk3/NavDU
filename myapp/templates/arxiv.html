@@ -46,6 +46,42 @@
     </div>
 </section>
 
+<!-- Search & Filter Section -->
+<section class="bg-white py-4 border-bottom">
+    <div class="container">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-5">
+                <label for="search" class="form-label small text-muted mb-1">Qidirish</label>
+                <input type="text" class="form-control" id="search" name="q" placeholder="Sarlavha, annotatsiya yoki muallif..." value="{{ search_query }}">
+            </div>
+            <div class="col-md-3">
+                <label for="category" class="form-label small text-muted mb-1">Kategoriya</label>
+                <select class="form-select" id="category" name="category">
+                    <option value="all">Barcha kategoriyalar</option>
+                    {% for cat in categories %}
+                        <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="year" class="form-label small text-muted mb-1">Yil</label>
+                <select class="form-select" id="year" name="year">
+                    <option value="all">Barcha yillar</option>
+                    {% for y in years %}
+                        <option value="{{ y }}" {% if selected_year|stringformat:"s" == y|stringformat:"s" %}selected{% endif %}>{{ y }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Filtrlash</button>
+            </div>
+        </form>
+        <div class="mt-3 small text-muted">
+            {{ pdf_files|length }} ta natija topildi
+        </div>
+    </div>
+</section>    
+
 
 <!-- Horizontal scroller: So'nggi qo'shilganlar -->
 {% if recent_pdfs %}
