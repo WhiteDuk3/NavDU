@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- Navigation (all links in Uzbek) -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -34,16 +34,20 @@
 </nav>
 
 <main class="container py-5">
-    <!-- Orqaga tugmasi -->
-    <a href="javascript:history.back()" class="d-inline-flex align-items-center gap-2 text-muted text-decoration-none mb-4">
-        <i class="fas fa-arrow-left"></i> Barcha nashrlarga qaytish
-    </a>
+    <!-- Back button aligned with content (using same column) -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <a href="javascript:history.back()" class="d-inline-flex align-items-center gap-2 text-muted text-decoration-none mb-4">
+                <i class="fas fa-arrow-left"></i> Barcha nashrlarga qaytish
+            </a>
+        </div>
+    </div>
 
     <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <!-- Sarlavha va metadata -->
-            <div class="text-center mb-5">
-                <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mb-3">
+        <div class="col-lg-8">
+            <!-- Article header -->
+            <div class="mb-5">
+                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
                     {% if article.category %}
                         <span class="badge bg-secondary">{{ article.category }}</span>
                     {% endif %}
@@ -56,33 +60,33 @@
                 </div>
                 <h1 class="display-5 fw-bold mb-3">{{ article.name }}</h1>
                 {% if article.authors %}
-                    <p class="lead">{{ article.authors }}</p>
+                    <p class="text-muted mb-0">{{ article.authors }}</p>
                 {% endif %}
             </div>
 
-            <!-- Asosiy rasm -->
+            <!-- Featured image -->
             {% if article.image %}
                 <div class="ratio ratio-16x9 bg-light rounded mb-5">
                     <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover rounded">
                 </div>
             {% endif %}
 
-            <!-- Annotatsiya -->
+            <!-- Abstract with blue line (left border) -->
             {% if article.abstract %}
-                <div class="bg-light p-5 rounded mb-5">
-                    <h2 class="h4 fw-semibold mb-3 text-center">Annotatsiya</h2>
-                    <p class="text-secondary" style="font-size: 1.1rem;">{{ article.abstract }}</p>
+                <div class="bg-light p-5 rounded mb-5" style="border-left: 6px solid #0d2b66;">
+                    <h2 class="h4 fw-semibold mb-3">Annotatsiya</h2>
+                    <p class="text-secondary mb-0" style="font-size: 1.1rem;">{{ article.abstract }}</p>
                 </div>
             {% endif %}
 
-            <!-- To'liq matn -->
+            <!-- Full text -->
             {% if article.content %}
                 <div class="article-content">
                     {{ article.content|linebreaks }}
                 </div>
             {% endif %}
 
-            <!-- PDF yuklab olish -->
+            <!-- PDF download -->
             <div class="text-center mt-5">
                 <a href="{{ article.file.url }}" class="btn btn-primary btn-lg" target="_blank">
                     <i class="fas fa-file-pdf me-2"></i>PDF ni yuklab olish
@@ -92,7 +96,7 @@
     </div>
 </main>
 
-<!-- Footer (all in Uzbek) -->
+<!-- Footer -->
 <footer class="bg-dark text-white-50 py-5 mt-5">
     <div class="container">
         <div class="row">
