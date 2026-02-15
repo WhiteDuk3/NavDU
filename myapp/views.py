@@ -73,7 +73,7 @@ def email_handler(request):
         })
         email_subject = f"New request from {name}"
         from_email = settings.EMAIL_HOST_USER  # or a default
-        to_emails = ['tuya.latifbobo.aket@gmail.com']  # consider moving to settings
+        to_emails = ['i.mahmudov@newuu.uz']  # consider moving to settings
 
         send_email_with_attachment(email_subject, message, from_email, to_emails, file_path)
 
@@ -144,6 +144,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
