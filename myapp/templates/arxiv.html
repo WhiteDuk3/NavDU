@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- Navigation (updated) -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -33,7 +33,7 @@
     </div>
 </nav>
 
-<!-- Page Header with light background -->
+<!-- Page Header -->
 <section class="bg-light border-bottom py-4">
     <div class="container py-3">
         <div class="row justify-content-center">
@@ -49,122 +49,90 @@
 <!-- Search & Filter Section -->
 <section class="bg-white py-4 border-bottom">
     <div class="container">
-        <form method="get" class="row g-3 align-items-end">
-            <div class="col-md-5">
-                <label for="search" class="form-label small text-muted mb-1">Qidirish</label>
-                <input type="text" class="form-control" id="search" name="q" placeholder="Sarlavha, annotatsiya yoki muallif..." value="{{ search_query }}">
-            </div>
-            <div class="col-md-3">
-                <label for="category" class="form-label small text-muted mb-1">Kategoriya</label>
-                <select class="form-select" id="category" name="category">
-                    <option value="all">Barcha kategoriyalar</option>
-                    {% for cat in categories %}
-                        <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-md-2">
-                <label for="year" class="form-label small text-muted mb-1">Yil</label>
-                <select class="form-select" id="year" name="year">
-                    <option value="all">Barcha yillar</option>
-                    {% for y in years %}
-                        <option value="{{ y }}" {% if selected_year|stringformat:"s" == y|stringformat:"s" %}selected{% endif %}>{{ y }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">Filtrlash</button>
-            </div>
-        </form>
-        <div class="mt-3 small text-muted">
-            {{ pdf_files|length }} ta natija topildi
-        </div>
-    </div>
-</section>    
-
-
-<!-- Horizontal scroller: So'nggi qo'shilganlar -->
-{% if recent_pdfs %}
-<section class="py-4">
-    <div class="container">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <h2 class="h4 fw-semibold mb-0">So'nggi qo'shilganlar</h2>
-            <a href="/arxiv" class="text-primary small">Barchasini ko'rish →</a>
-        </div>
-        <div class="horizontal-scroll-wrapper">
-            <div class="d-flex gap-4 pb-3">
-                {% for pdf in recent_pdfs %}
-                <div class="flex-shrink-0" style="width: 260px;">
-                    <a href="{% url 'article_preview' pdf.id %}" class="text-decoration-none">
-                        <div class="card h-100 border-0 shadow-sm hover-lift">
-                            <div class="position-relative overflow-hidden" style="height: 140px;">
-                                <img src="{{ pdf.image.url }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ pdf.name }}">
-                            </div>
-                            <div class="card-body p-3">
-                                <div class="small text-muted mb-1">
-                                    {% if pdf.category %}{{ pdf.category }}{% endif %}
-                                    {% if pdf.date %} • {{ pdf.date|date:"M Y" }}{% endif %}
-                                </div>
-                                <h6 class="card-title text-dark fw-semibold mb-2" style="font-size: 0.95rem;">{{ pdf.name|truncatechars:60 }}</h6>
-                                <p class="card-text small text-secondary">{{ pdf.authors|default:"Mualliflar" }}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form method="get" class="row g-3 align-items-end">
+                    <div class="col-md-5">
+                        <label for="search" class="form-label small text-muted mb-1">Qidirish</label>
+                        <input type="text" class="form-control" id="search" name="q" placeholder="Sarlavha, annotatsiya yoki muallif..." value="{{ search_query }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="category" class="form-label small text-muted mb-1">Kategoriya</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="all">Barcha kategoriyalar</option>
+                            {% for cat in categories %}
+                                <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="year" class="form-label small text-muted mb-1">Yil</label>
+                        <select class="form-select" id="year" name="year">
+                            <option value="all">Barcha yillar</option>
+                            {% for y in years %}
+                                <option value="{{ y }}" {% if selected_year|stringformat:"s" == y|stringformat:"s" %}selected{% endif %}>{{ y }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Filtrlash</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
-{% endif %}
 
-<!-- Full Articles Grid -->
+<!-- Full Articles Grid (centered) -->
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="h4 fw-semibold mb-4">Barcha nashrlar</h2>
-        <div class="row g-4">
-            {% for pdf in pdf_files %}
-            <div class="col-md-6 col-lg-4">
-                <a href="{% url 'article_preview' pdf.id %}" class="article-card-link">
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="{{ pdf.image.url }}" alt="{{ pdf.name }}" class="img-fluid">
-                        </div>
-                        <div class="article-content">
-                            <div class="article-meta">
-                                {% if pdf.category %}
-                                    <span class="badge bg-secondary">{{ pdf.category }}</span>
-                                {% endif %}
-                                {% if pdf.date %}
-                                    <span class="text-muted small">{{ pdf.date|date:"j M Y" }}</span>
-                                {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row g-4">
+                    {% for pdf in pdf_files %}
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'article_preview' pdf.id %}" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-image">
+                                    <img src="{{ pdf.image.url }}" alt="{{ pdf.name }}" class="img-fluid">
+                                </div>
+                                <div class="article-content">
+                                    <div class="article-meta">
+                                        {% if pdf.category %}
+                                            <span class="badge bg-secondary">{{ pdf.category }}</span>
+                                        {% endif %}
+                                        {% if pdf.date %}
+                                            <span class="text-muted small">{{ pdf.date|date:"j M Y" }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <h5 class="article-title">{{ pdf.name }}</h5>
+                                    {% if pdf.abstract %}
+                                        <p class="article-excerpt text-secondary">{{ pdf.abstract|truncatewords:20 }}</p>
+                                    {% endif %}
+                                    <div class="article-footer">
+                                        {% if pdf.authors %}
+                                            <span class="small text-muted"><i class="fas fa-user me-1"></i>{{ pdf.authors }}</span>
+                                        {% endif %}
+                                        {% if pdf.read_time %}
+                                            <span class="small text-muted"><i class="fas fa-clock me-1"></i>{{ pdf.read_time }} daqiqa</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="article-title">{{ pdf.name }}</h5>
-                            {% if pdf.abstract %}
-                                <p class="article-excerpt text-secondary">{{ pdf.abstract|truncatewords:20 }}</p>
-                            {% endif %}
-                            <div class="article-footer">
-                                {% if pdf.authors %}
-                                    <span class="small text-muted"><i class="fas fa-user me-1"></i>{{ pdf.authors }}</span>
-                                {% endif %}
-                                {% if pdf.read_time %}
-                                    <span class="small text-muted"><i class="fas fa-clock me-1"></i>{{ pdf.read_time }} daqiqa</span>
-                                {% endif %}
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
+                    {% empty %}
+                    <div class="col-12 text-center py-5">
+                        <p class="text-secondary">Hozircha nashrlar mavjud emas.</p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            {% empty %}
-            <div class="col-12 text-center py-5">
-                <p class="text-secondary">Hozircha nashrlar mavjud emas.</p>
-            </div>
-            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Footer (same) -->
+<!-- Footer -->
 <footer class="bg-dark text-white-50 py-5 mt-5">
     <div class="container">
         <div class="row">
