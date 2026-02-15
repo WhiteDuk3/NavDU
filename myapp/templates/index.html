@@ -55,6 +55,7 @@
 </section>
 
 <!-- ===== Latest Articles Grid (from database) ===== -->
+<!-- ===== Latest Articles Grid (Figma style) ===== -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
@@ -64,20 +65,17 @@
         <div class="row g-4">
             {% for pdf in pdf_files %}
             <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <a href="{{ pdf.file.url }}" class="text-decoration-none">
-                        <img src="{{ pdf.image.url }}" class="card-img-top" alt="{{ pdf.name }}" style="height: 240px; object-fit: cover;">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ pdf.file.url }}" class="text-decoration-none text-dark">{{ pdf.name }}</a>
-                        </h5>
-                        <!-- You can add author or date here if available in your model -->
+                <a href="{{ pdf.file.url }}" class="article-card-link">
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="{{ pdf.image.url }}" alt="{{ pdf.name }}" class="img-fluid">
+                        </div>
+                        <div class="article-content">
+                            <h5 class="article-title">{{ pdf.name }}</h5>
+                            <!-- Optional: add author or date if you have them in your model -->
+                        </div>
                     </div>
-                    <div class="card-footer bg-transparent border-0 pb-3">
-                        <a href="{{ pdf.file.url }}" class="btn btn-outline-primary btn-sm w-100">PDF ni o'qish</a>
-                    </div>
-                </div>
+                </a>
             </div>
             {% empty %}
             <div class="col-12 text-center py-5">
@@ -93,7 +91,7 @@
 
 <!-- ===== Features / Values (adapted from original) ===== -->
 <!-- ===== Features / Values (updated cards) ===== -->
-<section class="py-5">
+<!-- <section class="py-5">
     <div class="container">
         <div class="row g-4">
             <div class="col-md-4">
@@ -119,7 +117,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ===== Footer ===== -->
 <footer class="bg-dark text-white-50 py-5">
