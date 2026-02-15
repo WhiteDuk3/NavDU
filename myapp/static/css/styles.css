@@ -5,14 +5,13 @@
     background: linear-gradient(135deg, #0d2b66 0%, #1a4a8b 100%);
 }
 
-/* Navbar font size */
+/* Navbar */
 .navbar-nav .nav-link {
-    font-size: 13px !important;
+    font-size: 13px;
+    text-transform: none;          /* remove uppercase */
     transition: transform 0.2s ease;
     transform: translateY(0);
 }
-
-/* Navbar hover – only the hovered link moves up */
 .navbar-nav .nav-link:hover {
     transform: translateY(-2px);
     text-decoration: none;
@@ -21,6 +20,8 @@
 /* Hero buttons – scale on hover */
 .bg-gradient-primary .btn {
     transition: transform 0.2s ease, background-color 0.2s ease;
+    font-size: 0.9rem;             /* smaller than default */
+    padding: 0.5rem 1rem;
 }
 .bg-gradient-primary .btn:hover {
     transform: scale(1.05);
@@ -44,17 +45,6 @@
     color: #fff;
 }
 
-/* "PDF ni o'qish" button – vertical scale only */
-.btn-outline-primary {
-    transition: transform 0.2s ease, background-color 0.2s ease !important;
-}
-.btn-outline-primary:hover {
-    transform: scaleY(1.05) !important;
-    background-color: #0d6efd !important;
-    color: #fff !important;
-    border-color: #0d6efd !important;
-}
-
 /* "Barcha nashrlar" button – no scaling, smooth color */
 .btn-primary {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -75,88 +65,21 @@ footer .d-flex i:hover {
     opacity: 1;
 }
 
-/* Optional: Adjust hero title font sizes if needed */
+/* Hero title sizes */
 .bg-gradient-primary h1.display-4 {
-    font-size: 2.2rem; /* adjust as you like */
+    font-size: 2.2rem;
 }
 .bg-gradient-primary .lead {
     font-size: 1.3rem;
 }
 .bg-gradient-primary .fs-5 {
-    font-size: 1rem !important;
+    font-size: 1rem;
 }
-/* Hero buttons – restore original size */
-.bg-gradient-primary .btn {
-    font-size: 0.9rem !important;   /* smaller than default */
-    padding: 0.5rem 1rem !important; /* adjust padding if needed */
-}
-
-/* === IMPROVED CARD STYLES === */
-
-/* Article cards – equal height and fixed image size */
-.card.h-100 {
-    display: flex;
-    flex-direction: column;
-}
-.card .card-body {
-    flex: 1 1 auto;
-}
-.card .card-footer {
-    border-top: none;
-    background: transparent;
-}
-.card-img-top {
-    height: 400px;
-    object-fit: cover;
-}
-
-/* Force PDF button vertical scale */
-.card-footer .btn-outline-primary {
-    transition: transform 0.2s ease !important;
-    display: inline-block !important;
-}
-.card-footer .btn-outline-primary:hover {
-    transform: scaleY(1.05) !important;
-    background-color: #0d6efd !important;
-    color: #fff !important;
-    border-color: #0d6efd !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-}
-
-/* Feature cards */
-.feature-card {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 1.5rem;
-    height: 100%;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
-}
-.feature-card img {
-    max-width: 80px;
-    margin-bottom: 1rem;
-}
-.feature-card h4 {
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: #0d2b66; /* match hero gradient */
-}
-.feature-card p {
-    color: #4a5568;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
 
 /* === Article Cards (Figma style) === */
 .article-card-link {
     text-decoration: none;
     display: block;
-    transition: box-shadow 0.3s ease;
 }
 .article-card-link:hover {
     text-decoration: none;
@@ -177,7 +100,7 @@ footer .d-flex i:hover {
 }
 .article-image img {
     width: 100%;
-    height: 200px;
+    height: 180px;                  /* slightly smaller */
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -185,16 +108,17 @@ footer .d-flex i:hover {
     transform: scale(1.05);
 }
 .article-content {
-    padding: 1.5rem;
+    padding: 1rem 1rem 1.2rem;      /* reduced padding */
 }
 .article-title {
     margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
+    font-size: 1rem;
+    font-weight: 500;               /* medium weight */
+    color: #1a2b3c;                  /* soft dark */
+    line-height: 1.4;
     transition: color 0.2s ease;
+    text-align: left;                /* ensure left alignment */
 }
 .article-card:hover .article-title {
-    color: #0d2b66; /* your hero gradient dark blue */
+    color: #0d2b66;                  /* match hero gradient */
 }
-/* Optional: if you add extra text like authors, style them here */
