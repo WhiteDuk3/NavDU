@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Table styles */
+        /* Table styles with fixed layout for consistent column widths */
         .table-custom {
+            table-layout: fixed;
+            width: 100%;
             border-collapse: separate;
             border-spacing: 0 8px;
-            width: 100%;
         }
         .table-custom thead th {
             background-color: #0d2b66;
@@ -21,6 +22,18 @@
             font-weight: 600;
             padding: 1rem;
             border: none;
+        }
+        .table-custom th:nth-child(1),
+        .table-custom td:nth-child(1) {
+            width: 10%; /* number column */
+        }
+        .table-custom th:nth-child(2),
+        .table-custom td:nth-child(2) {
+            width: 60%; /* name column */
+        }
+        .table-custom th:nth-child(3),
+        .table-custom td:nth-child(3) {
+            width: 30%; /* position column */
         }
         .table-custom tbody tr {
             background-color: #f8f9fa;
@@ -35,6 +48,7 @@
             padding: 1rem;
             border: none;
             vertical-align: middle;
+            word-wrap: break-word;
         }
         .table-custom td:first-child {
             border-top-left-radius: 8px;
@@ -135,7 +149,7 @@
                     </thead>
                     <tbody>
                         <tr><td>4</td><td>Akademik Sh.Аyupov</td><td>A’zo</td></tr>
-                        <tr><td>5</td><td>Akademik I.D.Lelsitskiy</td><td>A’zo</td></tr>
+                        <tr><td>5</td><td>Akademik I.D.Lelchitskiy</td><td>A’zo</td></tr>
                         <tr><td>6</td><td>Akademik N.J.Kalonov</td><td>A’zo</td></tr>
                         <tr><td>7</td><td>Akademik K.Sh.Tojibayev</td><td>A’zo</td></tr>
                         <tr><td>8</td><td>Akademik S.Negmatov</td><td>A’zo</td></tr>
@@ -150,24 +164,25 @@
                         <tr><td>17</td><td>F.f.d., prof. D.Lutfullayeva</td><td>A’zo</td></tr>
                         <tr><td>18</td><td>P.f.d., prof. O.Musurmonova</td><td>A’zo</td></tr>
                         <tr><td>19</td><td>Iqt.f.d., prof. N.Murodova</td><td>A’zo</td></tr>
-                        <tr><td>20</td><td>P.f.d., prof. D.Narzikulova</td><td>A’zo</td></tr>
-                        <tr><td>21</td><td>P.f.d., prof. A.Ahmedov</td><td>A’zo</td></tr>
-                        <tr><td>22</td><td>F.f.d., prof. M.Ernazarova</td><td>A’zo</td></tr>
-                        <tr><td>23</td><td>F.f.d., prof. N.Safarova</td><td>A’zo</td></tr>
-                        <tr><td>24</td><td>B.f.d. U.X.Niyazmetov</td><td>A’zo</td></tr>
-                        <tr><td>25</td><td>I.f.f.d. I.S.Zaynutdinov</td><td>A’zo</td></tr>
-                        <tr><td>26</td><td>I.f.f.d. M.Kalonova</td><td>A’zo</td></tr>
-                        <tr><td>27</td><td>T.f.d. А.Аminova</td><td>A’zo</td></tr>
-                        <tr><td>28</td><td>B.f.d. S.Shodiyev</td><td>A’zo</td></tr>
-                        <tr><td>29</td><td>P.f.d. U.Mirsanov</td><td>A’zo</td></tr>
-                        <tr><td>30</td><td>T.f.n., prof. I.Kamolov</td><td>A’zo</td></tr>
-                        <tr><td>31</td><td>T.f.n. X.Qurbonov</td><td>A’zo</td></tr>
-                        <tr><td>32</td><td>P.f.n. T.Oʼtapov</td><td>A’zo</td></tr>
-                        <tr><td>33</td><td>P.f.n. G’.R.Yodgorov</td><td>A’zo</td></tr>
-                        <tr><td>34</td><td>F.-m.f.n. R.Ro‘ziyev</td><td>A’zo</td></tr>
-                        <tr><td>35</td><td>F.f.n. T.Xoʼjaev</td><td>A’zo</td></tr>
-                        <tr><td>36</td><td>F.-m.f.n. B.Izbosarov</td><td>A’zo</td></tr>
-                        <tr><td>37</td><td>B.f.n. А.Kushakov</td><td>A’zo</td></tr>
+                        <tr><td>20</td><td>B.f.n., dots. S.Xujjiyev</td><td>A’zo</td></tr>
+                        <tr><td>21</td><td>P.f.d., prof. D.Narzikulova</td><td>A’zo</td></tr>
+                        <tr><td>22</td><td>P.f.d., prof. A.Ahmedov</td><td>A’zo</td></tr>
+                        <tr><td>23</td><td>F.f.d., prof. M.Ernazarova</td><td>A’zo</td></tr>
+                        <tr><td>24</td><td>F.f.d., prof. N.Safarova</td><td>A’zo</td></tr>
+                        <tr><td>25</td><td>B.f.d. U.X.Niyazmetov</td><td>A’zo</td></tr>
+                        <tr><td>26</td><td>I.f.f.d. I.S.Zaynutdinov</td><td>A’zo</td></tr>
+                        <tr><td>27</td><td>I.f.f.d. M.Kalonova</td><td>A’zo</td></tr>
+                        <tr><td>28</td><td>T.f.d. А.Аminova</td><td>A’zo</td></tr>
+                        <tr><td>29</td><td>B.f.d. S.Shodiyev</td><td>A’zo</td></tr>
+                        <tr><td>30</td><td>P.f.d. U.Mirsanov</td><td>A’zo</td></tr>
+                        <tr><td>31</td><td>T.f.n., prof. I.Kamolov</td><td>A’zo</td></tr>
+                        <tr><td>32</td><td>T.f.n. X.Qurbonov</td><td>A’zo</td></tr>
+                        <tr><td>33</td><td>P.f.n. T.Oʼtapov</td><td>A’zo</td></tr>
+                        <tr><td>34</td><td>P.f.n. G’.R.Yodgorov</td><td>A’zo</td></tr>
+                        <tr><td>35</td><td>F.-m.f.n. R.Ro‘ziyev</td><td>A’zo</td></tr>
+                        <tr><td>36</td><td>F.f.n. T.Xoʼjaev</td><td>A’zo</td></tr>
+                        <tr><td>37</td><td>F.-m.f.n. B.Izbosarov</td><td>A’zo</td></tr>
+                        <tr><td>38</td><td>B.f.n. А.Kushakov</td><td>A’zo</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -185,6 +200,7 @@
                     </thead>
                     <tbody>
                         <tr><td>1</td><td>Baxromov Azizbek</td><td>Veb sahifa administratori</td></tr>
+                        <tr><td>1</td><td>Mahmudov Isfandiyor</td><td>Veb sahifa administratori</td></tr>
                     </tbody>
                 </table>
             </div>
