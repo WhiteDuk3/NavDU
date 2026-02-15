@@ -1,17 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ article.name }} - NavDU Axborotnomasi</title>
+    <title>{{ article.name }} – NavDU Axborotnomasi</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- Navigation (same as index) -->
+<!-- Navigation (all links in Uzbek) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -33,62 +33,67 @@
     </div>
 </nav>
 
-<!-- Article Content -->
-<article class="container py-5">
-    <!-- Back button -->
+<main class="container py-5">
+    <!-- Orqaga tugmasi -->
     <a href="javascript:history.back()" class="d-inline-flex align-items-center gap-2 text-muted text-decoration-none mb-4">
-        <i class="fas fa-arrow-left"></i> Back to Articles
+        <i class="fas fa-arrow-left"></i> Barcha nashrlarga qaytish
     </a>
 
-    <!-- Metadata -->
-    <div class="mb-4 d-flex flex-wrap align-items-center gap-3">
-        {% if article.category %}
-            <span class="badge bg-secondary">{{ article.category }}</span>
-        {% endif %}
-        {% if article.date %}
-            <span class="text-muted small"><i class="far fa-calendar-alt me-1"></i>{{ article.date|date:"M j, Y" }}</span>
-        {% endif %}
-        {% if article.read_time %}
-            <span class="text-muted small"><i class="far fa-clock me-1"></i>{{ article.read_time }}</span>
-        {% endif %}
-    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Sarlavha va metadata -->
+            <div class="text-center mb-5">
+                <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mb-3">
+                    {% if article.category %}
+                        <span class="badge bg-secondary">{{ article.category }}</span>
+                    {% endif %}
+                    {% if article.date %}
+                        <span class="text-muted small"><i class="far fa-calendar-alt me-1"></i>{{ article.date|date:"j F Y" }}</span>
+                    {% endif %}
+                    {% if article.read_time %}
+                        <span class="text-muted small"><i class="far fa-clock me-1"></i>{{ article.read_time }} daqiqa</span>
+                    {% endif %}
+                </div>
+                <h1 class="display-5 fw-bold mb-3">{{ article.name }}</h1>
+                {% if article.authors %}
+                    <p class="lead">{{ article.authors }}</p>
+                {% endif %}
+            </div>
 
-    <h1 class="display-5 fw-bold mb-4">{{ article.name }}</h1>
+            <!-- Asosiy rasm -->
+            {% if article.image %}
+                <div class="ratio ratio-16x9 bg-light rounded mb-5">
+                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover rounded">
+                </div>
+            {% endif %}
 
-    <!-- Authors -->
-    {% if article.authors %}
-        <div class="d-flex align-items-center gap-2 mb-4">
-            <i class="fas fa-user text-muted"></i>
-            <span>{{ article.authors }}</span>
+            <!-- Annotatsiya -->
+            {% if article.abstract %}
+                <div class="bg-light p-5 rounded mb-5">
+                    <h2 class="h4 fw-semibold mb-3 text-center">Annotatsiya</h2>
+                    <p class="text-secondary" style="font-size: 1.1rem;">{{ article.abstract }}</p>
+                </div>
+            {% endif %}
+
+            <!-- To'liq matn -->
+            {% if article.content %}
+                <div class="article-content">
+                    {{ article.content|linebreaks }}
+                </div>
+            {% endif %}
+
+            <!-- PDF yuklab olish -->
+            <div class="text-center mt-5">
+                <a href="{{ article.file.url }}" class="btn btn-primary btn-lg" target="_blank">
+                    <i class="fas fa-file-pdf me-2"></i>PDF ni yuklab olish
+                </a>
+            </div>
         </div>
-    {% endif %}
-
-    <!-- Featured image -->
-    <div class="ratio ratio-16x9 bg-light rounded mb-4">
-        <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover rounded">
     </div>
+</main>
 
-    <!-- Abstract -->
-    <div class="bg-light p-4 rounded border-start border-primary border-4 mb-4">
-        <h5 class="fw-semibold mb-3">Abstract</h5>
-        <p class="text-secondary">{{ article.abstract|default:"No abstract available." }}</p>
-    </div>
-
-    <!-- Content (if any) -->
-    <div class="prose">
-        {{ article.content|default:""|linebreaks }}
-    </div>
-
-    <!-- PDF download -->
-    <div class="mt-5">
-        <a href="{{ article.file.url }}" class="btn btn-primary btn-lg" target="_blank">
-            <i class="fas fa-file-pdf me-2"></i>Download PDF
-        </a>
-    </div>
-</article>
-
-<!-- Footer (same as index) -->
-<footer class="bg-dark text-white-50 py-5">
+<!-- Footer (all in Uzbek) -->
+<footer class="bg-dark text-white-50 py-5 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -100,7 +105,7 @@
                 <h6 class="text-white">Sahifalar</h6>
                 <ul class="list-unstyled small">
                     <li><a href="/about" class="text-white-50 text-decoration-none">Biz haqimizda</a></li>
-                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat</a></li>
+                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat jamoasi</a></li>
                     <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
                     <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
                     <li><a href="/muallif" class="text-white-50 text-decoration-none">Muallif profili</a></li>
@@ -128,6 +133,7 @@
     </div>
 </footer>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
