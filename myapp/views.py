@@ -9,7 +9,10 @@ from .models import PDFFile
 
 from django.shortcuts import render, get_object_or_404
 
-
+def about(request):
+    popular_articles = PDFFile.objects.all().order_by('-date')[:6]
+    return render(request, 'about.html', {'popular_articles': popular_articles})
+    
 def article_preview(request, pdf_id):
     article = get_object_or_404(PDFFile, id=pdf_id)
     return render(request, 'article_preview.html', {'article': article})
@@ -116,4 +119,5 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
