@@ -45,6 +45,7 @@
             margin-bottom: 0.75rem;
             padding-left: 1.5rem;
             position: relative;
+            line-height: 1.5;
         }
         .ref-list li::before {
             content: "•";
@@ -52,6 +53,7 @@
             font-weight: bold;
             position: absolute;
             left: 0;
+            top: 0;
         }
         .example-box {
             background: #f8f9fa;
@@ -59,6 +61,31 @@
             padding: 1rem;
             margin: 1rem 0;
             font-style: italic;
+        }
+        /* Better alignment for nested content */
+        .requirement-section p:last-child {
+            margin-bottom: 0;
+        }
+        .requirement-section ul.ref-list + p {
+            margin-top: 1rem;
+        }
+        /* Ensure consistent spacing for headings inside sections */
+        .requirement-section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: #0d2b66;
+        }
+        .requirement-section h3:first-of-type {
+            margin-top: 0;
+        }
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .requirement-section {
+                padding: 1.5rem;
+            }
+            .ref-list li {
+                padding-left: 1.2rem;
+            }
         }
     </style>
 </head>
