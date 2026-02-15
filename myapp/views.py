@@ -7,6 +7,13 @@ from django.http import FileResponse, Http404
 from django.conf import settings
 from .models import PDFFile
 
+from django.shortcuts import render, get_object_or_404
+
+
+def article_preview(request, pdf_id):
+    article = get_object_or_404(PDFFile, id=pdf_id)
+    return render(request, 'article_preview.html', {'article': article})
+
 # ---------- Media serving ----------
 def serve_media(request, file_path):
     """Serve media files securely (prevent directory traversal)."""
@@ -109,3 +116,4 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
