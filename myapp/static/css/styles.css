@@ -141,3 +141,27 @@ footer .d-flex i:hover {
     padding-top: 0.75rem;
     font-size: 0.85rem;
 }
+
+
+/* Article content styling */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #2c3e50;
+}
+.article-content h2,
+.article-content h3 {
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+}
+.article-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+.article-content ul,
+.article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
