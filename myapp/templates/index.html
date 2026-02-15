@@ -55,9 +55,10 @@
 </section>
     
 <!-- Latest Articles Grid -->
+<!-- ===== Latest Articles Grid ===== -->
 <section class="py-5 bg-light">
     <div class="container">
-       <div class="text-left mb-5">  <!-- was text-center -->
+        <div class="text-center mb-5">
             <h2 class="display-6 fw-semibold">So'nggi nashrlar</h2>
             <p class="text-secondary">Jurnalning eng so'nggi sonlari va maqolalari</p>
         </div>
@@ -70,7 +71,26 @@
                             <img src="{{ pdf.image.url }}" alt="{{ pdf.name }}" class="img-fluid">
                         </div>
                         <div class="article-content">
+                            <div class="article-meta">
+                                {% if pdf.category %}
+                                    <span class="badge bg-secondary">{{ pdf.category }}</span>
+                                {% endif %}
+                                {% if pdf.date %}
+                                    <span class="text-muted small">{{ pdf.date|date:"j M Y" }}</span>
+                                {% endif %}
+                            </div>
                             <h5 class="article-title">{{ pdf.name }}</h5>
+                            {% if pdf.abstract %}
+                                <p class="article-excerpt text-secondary">{{ pdf.abstract|truncatewords:20 }}</p>
+                            {% endif %}
+                            <div class="article-footer">
+                                {% if pdf.authors %}
+                                    <span class="small text-muted"><i class="fas fa-user me-1"></i>{{ pdf.authors }}</span>
+                                {% endif %}
+                                {% if pdf.read_time %}
+                                    <span class="small text-muted"><i class="fas fa-clock me-1"></i>{{ pdf.read_time }} daqiqa</span>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -86,7 +106,6 @@
         </div>
     </div>
 </section>
-
 <!-- Footer -->
 <footer class="bg-dark text-white-50 py-5">
     <div class="container">
