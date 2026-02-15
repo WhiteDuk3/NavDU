@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.name }} - NavDU Axborotnomasi</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation (same as index) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/voiy pde.jpg' %}" alt="NavDU" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/about">Biz haqimizda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tahririyat">Tahririyat jamoasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="/talablar">Nashr qilish shartlari</a></li>
+                <li class="nav-item"><a class="nav-link" href="/arxiv">Arxiv</a></li>
+                <li class="nav-item"><a class="nav-link" href="/muallif">Muallif profili</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Article Content -->
+<article class="container py-5">
+    <!-- Back button -->
+    <a href="javascript:history.back()" class="d-inline-flex align-items-center gap-2 text-muted text-decoration-none mb-4">
+        <i class="fas fa-arrow-left"></i> Back to Articles
+    </a>
+
+    <!-- Metadata -->
+    <div class="mb-4 d-flex flex-wrap align-items-center gap-3">
+        {% if article.category %}
+            <span class="badge bg-secondary">{{ article.category }}</span>
+        {% endif %}
+        {% if article.date %}
+            <span class="text-muted small"><i class="far fa-calendar-alt me-1"></i>{{ article.date|date:"M j, Y" }}</span>
+        {% endif %}
+        {% if article.read_time %}
+            <span class="text-muted small"><i class="far fa-clock me-1"></i>{{ article.read_time }}</span>
+        {% endif %}
+    </div>
+
+    <h1 class="display-5 fw-bold mb-4">{{ article.name }}</h1>
+
+    <!-- Authors -->
+    {% if article.authors %}
+        <div class="d-flex align-items-center gap-2 mb-4">
+            <i class="fas fa-user text-muted"></i>
+            <span>{{ article.authors }}</span>
+        </div>
+    {% endif %}
+
+    <!-- Featured image -->
+    <div class="ratio ratio-16x9 bg-light rounded mb-4">
+        <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover rounded">
+    </div>
+
+    <!-- Abstract -->
+    <div class="bg-light p-4 rounded border-start border-primary border-4 mb-4">
+        <h5 class="fw-semibold mb-3">Abstract</h5>
+        <p class="text-secondary">{{ article.abstract|default:"No abstract available." }}</p>
+    </div>
+
+    <!-- Content (if any) -->
+    <div class="prose">
+        {{ article.content|default:""|linebreaks }}
+    </div>
+
+    <!-- PDF download -->
+    <div class="mt-5">
+        <a href="{{ article.file.url }}" class="btn btn-primary btn-lg" target="_blank">
+            <i class="fas fa-file-pdf me-2"></i>Download PDF
+        </a>
+    </div>
+</article>
+
+<!-- Footer (same as index) -->
+<footer class="bg-dark text-white-50 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">NavDU Axborotnomasi</h5>
+                <p class="small">Ilmiy jurnal • 2025</p>
+                <p class="small">Onlayn ISSN 2520-2480<br>Chop etish ISSN 2520-6990</p>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h6 class="text-white">Sahifalar</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/about" class="text-white-50 text-decoration-none">Biz haqimizda</a></li>
+                    <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat</a></li>
+                    <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
+                    <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
+                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Muallif profili</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Bog'lanish</h6>
+                <ul class="list-unstyled small">
+                    <li><i class="fas fa-envelope me-2"></i> journal@navdu.uz</li>
+                    <li><i class="fas fa-phone me-2"></i> +998 78 113-44-54</li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h6 class="text-white">Ijtimoiy tarmoqlar</h6>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white-50 fs-5"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-top border-secondary pt-4 mt-2 text-center small">
+            <p>© 2024 Navoiy davlat universiteti. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
