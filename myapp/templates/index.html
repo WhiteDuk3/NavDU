@@ -64,7 +64,7 @@
         <div class="row g-4">
             {% for pdf in pdf_files %}
             <div class="col-md-6 col-lg-4">
-                <a href="{{ pdf.file.url }}" class="article-card-link">
+                <a href="{% url 'article_preview' pdf.id %}" class="article-card-link">
                     <div class="article-card">
                         <div class="article-image">
                             <img src="{{ pdf.image.url }}" alt="{{ pdf.name }}" class="img-fluid">
