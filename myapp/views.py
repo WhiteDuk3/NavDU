@@ -29,8 +29,8 @@ def article_preview(request, pdf_id):
 
 def download_article(request, pdf_id):
     article = get_object_or_404(PDFFile, id=pdf_id)
-    article.download_count += 1
-    article.save(update_fields=['download_count'])
+    # article.download_count += 1
+    # article.save(update_fields=['download_count'])
     return redirect(article.file.url)
 
 
@@ -161,6 +161,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
