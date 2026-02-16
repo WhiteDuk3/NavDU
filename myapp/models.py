@@ -10,6 +10,9 @@ class PDFFile(models.Model):
     content = models.TextField(blank=True, null=True)
     date = models.DateField(auto_now_add=True, null=True, blank=True)
     read_time = models.CharField(max_length=20, blank=True, null=True)
+    view_count = models.PositiveIntegerField(default=0)
+    download_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
+
         return self.name
