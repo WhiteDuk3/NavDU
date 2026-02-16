@@ -33,11 +33,6 @@ def download_article(request, pdf_id):
     article.save(update_fields=['download_count'])
     return redirect(article.file.url)
 
-def article_preview(request, pdf_id):
-    article = get_object_or_404(PDFFile, id=pdf_id)
-    article.view_count += 1
-    article.save(update_fields=['view_count'])
-    # … rest of your code …
 
 # ---------- Media serving ----------
 def serve_media(request, file_path):
@@ -166,6 +161,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
