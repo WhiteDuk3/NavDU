@@ -69,8 +69,11 @@
             color: #0d2b66;
         }
 
-        /* Featured image – now full column width (same as text) */
+        /* Featured image – now with max-width to prevent being too big */
         .featured-image {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 2rem;
             border-radius: 12px;
             overflow: hidden;
@@ -82,11 +85,12 @@
             display: block;
         }
 
-        /* Fade‑in elements */
+        /* Fade‑in elements – smooth both ways */
         .scroll-fade {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: opacity, transform;
         }
         .scroll-fade.visible {
             opacity: 1;
@@ -244,6 +248,9 @@
                 padding: 0.75rem 1.5rem;
                 font-size: 1rem;
             }
+            .featured-image {
+                max-width: 100%; /* on mobile, take full width */
+            }
         }
     </style>
 </head>
@@ -295,7 +302,7 @@
                 {% endif %}
             </div>
 
-            <!-- Featured image – full column width, no parallax, no size limit -->
+            <!-- Featured image – now with max-width -->
             {% if article.image %}
                 <div class="featured-image">
                     <img src="{{ article.image.url }}" alt="{{ article.name }}" class="img-fluid">
@@ -328,7 +335,7 @@
                 </button>
             </div>
 
-            <!-- Related articles -->
+            <!-- Related articles (each card fades) -->
             {% if related_articles %}
                 <div class="row mt-5">
                     <div class="col-12">
@@ -359,7 +366,7 @@
     </div>
 </main>
 
-<!-- Citation Modal -->
+<!-- Citation Modal (unchanged) -->
 <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
