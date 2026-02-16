@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Base styles – kept as before */
+        /* Base styles – kept minimal */
         .article-header {
             border-bottom: 1px solid #e9ecef;
             padding-bottom: 1.5rem;
@@ -58,29 +58,32 @@
             color: #0d2b66;
         }
 
-        /* Featured image with subtle parallax */
+        /* Featured image – smaller and with subtle parallax */
         .featured-image {
+            max-width: 800px;          /* limits width on large screens */
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 2rem;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateZ(0); /* performance */
+            transform: translateZ(0);
             will-change: transform;
         }
         .featured-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform 0.3s ease;
             will-change: transform;
         }
         .featured-image:hover img {
-            transform: scale(1.02); /* subtle zoom on hover */
+            transform: scale(1.02);    /* subtle zoom on hover */
         }
 
-        /* Parallax effect (applied via JS) */
+        /* Parallax effect (very subtle) */
         .parallax {
-            transition: transform 0.1s ease-out;
+            transition: transform 0.05s linear;
         }
 
         /* Abstract box with fade-in */
@@ -125,7 +128,7 @@
             color: #2c3e50;
         }
 
-        /* Buttons – pill‑shaped, with micro‑interactions */
+        /* Buttons – pill‑shaped with micro‑interactions */
         .btn-pill {
             display: inline-flex;
             align-items: center;
@@ -191,7 +194,7 @@
             width: 100%;
         }
 
-        /* Related cards – same as before, but add fade‑in */
+        /* Related cards – fade‑in and hover lift */
         .related-card {
             background: #fff;
             border-radius: 12px;
@@ -256,7 +259,7 @@
 <body>
 
 <!-- Progress bar (optional) – remove if you don't want -->
-<div id="reading-progress" class="progress-bar" style="position:fixed;top:0;left:0;width:0%;height:4px;background:#0d2b66;z-index:1030;transition:width 0.1s ease;"></div>
+<div id="reading-progress" style="position:fixed;top:0;left:0;width:0%;height:4px;background:#0d2b66;z-index:1030;transition:width 0.1s ease;"></div>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
@@ -288,7 +291,7 @@
                 <i class="fas fa-arrow-left"></i> Barcha nashrlarga qaytish
             </a>
 
-            <!-- Article header (no animation) -->
+            <!-- Article header -->
             <div class="article-header">
                 <div class="article-meta">
                     {% if article.category %}
@@ -307,10 +310,10 @@
                 {% endif %}
             </div>
 
-            <!-- Featured image with parallax (applied via JS) -->
+            <!-- Featured image – smaller, with very subtle parallax -->
             {% if article.image %}
                 <div class="featured-image parallax" id="featured-image">
-                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover">
+                    <img src="{{ article.image.url }}" alt="{{ article.name }}">
                 </div>
             {% endif %}
 
@@ -456,12 +459,12 @@
 
 <!-- Animation scripts -->
 <script>
-    // Parallax effect on featured image
+    // Very subtle parallax on featured image
     const image = document.getElementById('featured-image');
     if (image) {
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
-            const speed = 0.3;
+            const speed = 0.1; // even subtler
             image.style.transform = `translateY(${scrollY * speed}px)`;
         });
     }
@@ -472,18 +475,12 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optionally unobserve after first appearance
-                // observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px' // triggers slightly before element enters viewport
-    });
-
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
     fadeElements.forEach(el => observer.observe(el));
 
-    // Reading progress bar (optional)
+    // Reading progress bar
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
