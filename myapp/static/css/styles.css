@@ -133,14 +133,34 @@ footer .d-flex i:hover {
     margin-bottom: 1rem;
     line-height: 1.5;
 }
+/* Fix card height uniformity and truncation */
 .article-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
     border-top: 1px solid #e9ecef;
     padding-top: 0.75rem;
     font-size: 0.85rem;
-    margin-top: auto;
+}
+.article-footer span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.article-footer span:first-child {
+    max-width: 60%;
+}
+.article-footer span:last-child {
+    max-width: 35%;
+    text-align: right;
+}
+
+/* Ensure any circular images fill the circle */
+.rounded-circle {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 /* Force equal card height and truncate long titles */
