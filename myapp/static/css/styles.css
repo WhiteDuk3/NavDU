@@ -155,6 +155,13 @@ footer .d-flex i:hover {
     max-width: 35%;
     text-align: right;
 }
+.article-footer .small.text-muted {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* adjust as needed */
+    display: inline-block;
+}
 
 /* Ensure any circular images fill the circle */
 .rounded-circle {
