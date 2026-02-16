@@ -16,8 +16,8 @@ def about(request):
 def article_preview(request, pdf_id):
     article = get_object_or_404(PDFFile, id=pdf_id)
     # Increment view count
-    article.view_count += 1
-    article.save(update_fields=['view_count'])
+    # article.view_count += 1
+    # article.save(update_fields=['view_count'])
     
     # Get related articles (same category, exclude current)
     related_articles = PDFFile.objects.filter(category=article.category).exclude(id=article.id).order_by('-date')[:3]
@@ -161,6 +161,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
