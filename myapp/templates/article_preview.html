@@ -12,6 +12,125 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Enhanced article styles */
+        .article-header {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0d2b66;
+            margin-bottom: 1rem;
+        }
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        .article-meta i {
+            margin-right: 0.3rem;
+            color: #0d2b66;
+        }
+        .article-authors {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 0;
+        }
+        .abstract-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 6px solid #0d2b66;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .abstract-box:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        .abstract-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0d2b66;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+        .pdf-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #0d2b66;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(13,43,102,0.3);
+        }
+        .pdf-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(13,43,102,0.4);
+            color: white;
+        }
+        .pdf-button i {
+            transition: transform 0.2s ease;
+        }
+        .pdf-button:hover i {
+            transform: translateY(-2px);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover {
+            color: #0d2b66;
+        }
+        .featured-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+            .article-meta {
+                gap: 1rem;
+            }
+            .abstract-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -38,64 +157,60 @@
 </nav>
 
 <main class="container py-5">
-    <!-- Back button aligned with content (using same column) -->
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <a href="javascript:history.back()" class="d-inline-flex align-items-center gap-2 text-muted text-decoration-none mb-4">
+        <div class="col-lg-10">
+            <!-- Back link -->
+            <a href="javascript:history.back()" class="back-link">
                 <i class="fas fa-arrow-left"></i> Barcha nashrlarga qaytish
             </a>
-        </div>
-    </div>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
             <!-- Article header -->
-            <div class="mb-5">
-                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+            <div class="article-header">
+                <div class="article-meta mb-3">
                     {% if article.category %}
-                        <span class="badge bg-secondary">{{ article.category }}</span>
+                        <span><i class="fas fa-tag"></i> {{ article.category }}</span>
                     {% endif %}
                     {% if article.date %}
-                        <span class="text-muted small"><i class="far fa-calendar-alt me-1"></i>{{ article.date|date:"j F Y" }}</span>
+                        <span><i class="far fa-calendar-alt"></i> {{ article.date|date:"j F Y" }}</span>
                     {% endif %}
                     {% if article.read_time %}
-                        <span class="text-muted small"><i class="far fa-clock me-1"></i>{{ article.read_time }} daqiqa</span>
+                        <span><i class="far fa-clock"></i> {{ article.read_time }} daqiqa</span>
                     {% endif %}
                 </div>
-                <h1 class="display-5 fw-bold mb-3">{{ article.name }}</h1>
+                <h1 class="article-title">{{ article.name }}</h1>
                 {% if article.authors %}
-                    <p class="text-muted mb-0">{{ article.authors }}</p>
+                    <p class="article-authors"><i class="fas fa-user-edit"></i> {{ article.authors }}</p>
                 {% endif %}
             </div>
 
             <!-- Featured image -->
             {% if article.image %}
-                <div class="ratio ratio-16x9 bg-light rounded mb-5">
-                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover rounded">
+                <div class="featured-image">
+                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="img-fluid w-100">
                 </div>
             {% endif %}
 
-            <!-- Abstract with blue line (left border) -->
+            <!-- Abstract -->
             {% if article.abstract %}
-                <div class="bg-light p-5 rounded mb-5" style="border-left: 6px solid #0d2b66;">
+                <div class="abstract-box">
                     <h2 class="h4 fw-semibold mb-3">Annotatsiya</h2>
-                    <p class="text-secondary mb-0 abstract-text">{{ article.abstract }}</p>
+                    <p class="abstract-text mb-0">{{ article.abstract }}</p>
                 </div>
             {% endif %}
 
             <!-- Full text -->
-            <!-- Full text (flush with blue line) -->
             {% if article.content %}
-                <div class="content-flush-left">
-                    <h2 class="h4 fw-semibold mb-3">Kirish</h2>
+                <div class="content-section">
+                    <h2>Kirish</h2>
                     {{ article.content|linebreaks }}
                 </div>
+                <!-- If there are more sections like Methodology, Results, etc., they can be added here -->
             {% endif %}
 
             <!-- PDF download -->
             <div class="text-center mt-5">
-                <a href="{{ article.file.url }}" class="btn btn-primary btn-lg" target="_blank">
-                    <i class="fas fa-file-pdf me-2"></i>PDF ni yuklab olish
+                <a href="{{ article.file.url }}" class="pdf-button" target="_blank">
+                    <i class="fas fa-file-pdf"></i> PDF ni yuklab olish
                 </a>
             </div>
         </div>
@@ -103,7 +218,7 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-dark text-white-50 py-5 mt-5">
+<footer class="bg-dark text-white-50 py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -118,7 +233,7 @@
                     <li><a href="/tahririyat" class="text-white-50 text-decoration-none">Tahririyat jamoasi</a></li>
                     <li><a href="/talablar" class="text-white-50 text-decoration-none">Nashr qilish shartlari</a></li>
                     <li><a href="/arxiv" class="text-white-50 text-decoration-none">Arxiv</a></li>
-                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Muallif profili</a></li>
+                    <li><a href="/muallif" class="text-white-50 text-decoration-none">Mualliflarga</a></li>
                 </ul>
             </div>
             <div class="col-md-3 mb-4">
