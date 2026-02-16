@@ -241,7 +241,7 @@
 
             <!-- PDF download + citation button -->
             <div class="d-flex justify-content-center align-items-center gap-3 mt-5">
-                <a href="{{ article.file.url }}" class="pdf-button" target="_blank">
+                <a href="{% url 'download_article' article.id %}">
                     <i class="fas fa-file-pdf"></i> PDF ni yuklab olish
                 </a>
                 <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#citationModal">
