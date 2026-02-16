@@ -6,16 +6,26 @@ from django.template.loader import render_to_string
 from django.http import FileResponse, Http404
 from django.conf import settings
 from .models import PDFFile
+from django.shortcuts import get_object_or_404, redirect
 
 from django.shortcuts import render, get_object_or_404
 
 def about(request):
     popular_articles = PDFFile.objects.all().order_by('-date')[:6]
     return render(request, 'about.html', {'popular_articles': popular_articles})
-    
 def article_preview(request, pdf_id):
     article = get_object_or_404(PDFFile, id=pdf_id)
-    return render(request, 'article_preview.html', {'article': article})
+    # Increment view count
+    article.view_count += 1
+    article.save(update_fields=['view_count'])
+    
+    # Get related articles (same category, exclude current)
+    related_articles = PDFFile.objects.filter(category=article.category).exclude(id=article.id).order_by('-date')[:3]
+    
+    return render(request, 'article_preview.html', {
+        'article': article,
+        'related_articles': related_articles
+    })
 
 def download_article(request, pdf_id):
     article = get_object_or_404(PDFFile, id=pdf_id)
@@ -156,6 +166,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
