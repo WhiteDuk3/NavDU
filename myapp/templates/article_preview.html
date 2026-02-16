@@ -13,22 +13,19 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Force text to stay inside its container */
-        .content-section, .abstract-box {
-            max-width: 100%;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            word-break: break-word;
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: #0d2b66;
+            z-index: 1030;
+            transition: width 0.1s ease;
         }
-        
-        /* Make the image smaller and centered */
-        .featured-image {
-            max-width: 600px;        /* smaller on large screens */
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem;
-        }
-        /* Base styles – kept minimal */
+
+        /* Article header */
         .article-header {
             border-bottom: 1px solid #e9ecef;
             padding-bottom: 1.5rem;
@@ -44,10 +41,9 @@
         .article-meta {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             gap: 1.5rem;
+            align-items: center;
             margin-bottom: 1rem;
-            padding-left: 0;
         }
         .meta-item {
             display: inline-flex;
@@ -73,11 +69,8 @@
             color: #0d2b66;
         }
 
-        /* Featured image – smaller and with subtle parallax */
+        /* Featured image – now full column width (same as text) */
         .featured-image {
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
             margin-bottom: 2rem;
             border-radius: 12px;
             overflow: hidden;
@@ -85,19 +78,22 @@
         }
         .featured-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .featured-image:hover img {
-            transform: scale(1.02);    /* subtle zoom on hover */
+            height: auto;
+            display: block;
         }
 
-        /* Parallax effect (very subtle) */
-        .parallax {
-            transition: transform 0.05s linear;
+        /* Fade‑in elements */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Abstract box with fade-in */
+        /* Abstract box */
         .abstract-box {
             background: #f8f9fa;
             border-radius: 12px;
@@ -105,25 +101,16 @@
             margin-bottom: 2.5rem;
             border-left: 6px solid #0d2b66;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .abstract-box.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .abstract-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2c3e50;
         }
 
-        /* Content sections with fade-in */
+        /* Content sections */
         .content-section {
             margin-bottom: 2.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .content-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         .content-section h2 {
             font-size: 1.8rem;
@@ -139,7 +126,7 @@
             color: #2c3e50;
         }
 
-        /* Buttons – pill‑shaped with micro‑interactions */
+        /* Buttons */
         .btn-pill {
             display: inline-flex;
             align-items: center;
@@ -176,7 +163,7 @@
             box-shadow: 0 8px 20px rgba(13,43,102,0.3);
         }
 
-        /* Back link with underline animation */
+        /* Back link */
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -205,7 +192,7 @@
             width: 100%;
         }
 
-        /* Related cards – fade‑in and hover lift */
+        /* Related cards */
         .related-card {
             background: #fff;
             border-radius: 12px;
@@ -213,13 +200,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             height: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, transform 0.3s ease;
-        }
-        .related-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         .related-card:hover {
             box-shadow: 0 12px 24px rgba(0,0,0,0.1);
@@ -269,8 +249,8 @@
 </head>
 <body>
 
-<!-- Progress bar (optional) – remove if you don't want -->
-<div id="reading-progress" style="position:fixed;top:0;left:0;width:0%;height:4px;background:#0d2b66;z-index:1030;transition:width 0.1s ease;"></div>
+<!-- Progress bar -->
+<div id="reading-progress" class="progress-bar"></div>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
@@ -305,15 +285,9 @@
             <!-- Article header -->
             <div class="article-header">
                 <div class="article-meta">
-                    {% if article.category %}
-                        <span class="meta-item"><i class="fas fa-tag"></i> {{ article.category }}</span>
-                    {% endif %}
-                    {% if article.date %}
-                        <span class="meta-item"><i class="far fa-calendar-alt"></i> {{ article.date|date:"j F Y" }}</span>
-                    {% endif %}
-                    {% if article.read_time %}
-                        <span class="meta-item"><i class="far fa-clock"></i> {{ article.read_time }} daqiqa</span>
-                    {% endif %}
+                    <span class="meta-item"><i class="fas fa-tag"></i> {{ article.category|default:"Kategoriya" }}</span>
+                    <span class="meta-item"><i class="far fa-calendar-alt"></i> {{ article.date|date:"j F Y"|default:"Sana" }}</span>
+                    <span class="meta-item"><i class="far fa-clock"></i> {{ article.read_time|default:"Vaqt" }} daqiqa</span>
                 </div>
                 <h1 class="article-title">{{ article.name }}</h1>
                 {% if article.authors %}
@@ -321,31 +295,31 @@
                 {% endif %}
             </div>
 
-            <!-- Featured image – smaller, with very subtle parallax -->
+            <!-- Featured image – full column width, no parallax, no size limit -->
             {% if article.image %}
-                <div class="featured-image ratio ratio-16x9">
-                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="object-fit-cover">
+                <div class="featured-image">
+                    <img src="{{ article.image.url }}" alt="{{ article.name }}" class="img-fluid">
                 </div>
             {% endif %}
 
-            <!-- Abstract -->
+            <!-- Abstract (fade‑in) -->
             {% if article.abstract %}
-                <div class="abstract-box scroll-fade" id="abstract">
+                <div class="abstract-box scroll-fade">
                     <h2 class="h4 fw-semibold mb-3">Annotatsiya</h2>
                     <p class="abstract-text mb-0">{{ article.abstract }}</p>
                 </div>
             {% endif %}
 
-            <!-- Full text -->
+            <!-- Full text (fade‑in) -->
             {% if article.content %}
-                <div class="content-section scroll-fade" id="content">
+                <div class="content-section scroll-fade">
                     <h2>Kirish</h2>
                     {{ article.content|linebreaks }}
                 </div>
             {% endif %}
 
-            <!-- Buttons -->
-            <div class="d-flex justify-content-center align-items-center gap-3 mt-5 scroll-fade" id="buttons">
+            <!-- Buttons (fade‑in) -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-5 scroll-fade">
                 <a href="{{ article.file.url }}" class="btn-pill btn-pill-primary" target="_blank">
                     <i class="fas fa-file-pdf"></i> PDF ni yuklab olish
                 </a>
@@ -360,7 +334,7 @@
                     <div class="col-12">
                         <h3 class="h4 fw-semibold mb-4">Oʻxshash maqolalar</h3>
                     </div>
-                    <div class="row g-4" id="related">
+                    <div class="row g-4">
                         {% for rel in related_articles %}
                         <div class="col-md-4">
                             <a href="{% url 'article_preview' rel.id %}" class="text-decoration-none">
@@ -385,7 +359,7 @@
     </div>
 </main>
 
-<!-- Citation Modal (unchanged) -->
+<!-- Citation Modal -->
 <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -424,7 +398,7 @@
     </div>
 </div>
 
-<!-- Footer (unchanged) -->
+<!-- Footer -->
 <footer class="bg-dark text-white-50 py-5 mt-5">
     <div class="container">
         <div class="row">
@@ -468,30 +442,24 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Animation scripts -->
+<!-- Continuous fade script -->
 <script>
-    // Very subtle parallax on featured image
-    const image = document.getElementById('featured-image');
-    if (image) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const speed = 0.1; // even subtler
-            image.style.transform = `translateY(${scrollY * speed}px)`;
-        });
-    }
-
-    // Intersection Observer for fade‑ins
     const fadeElements = document.querySelectorAll('.scroll-fade');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
             }
         });
-    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
     fadeElements.forEach(el => observer.observe(el));
 
-    // Reading progress bar
+    // Progress bar
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
