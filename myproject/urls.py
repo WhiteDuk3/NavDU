@@ -7,6 +7,7 @@ from myapp.views import (
 from myapp import views
 
 urlpatterns = [
+    path('email_handler/', views.email_handler, name='email_handler'),
     path('download/<int:pdf_id>/', views.download_article, name='download_article'),
     path('article/<int:pdf_id>/', views.article_preview, name='article_preview'),
     path('admin/', admin.site.urls),
@@ -19,6 +20,7 @@ urlpatterns = [
     path('email_handler/', email_handler, name='email_handler'),
     re_path(r'^media/(?P<file_path>.*)$', serve_media, name='serve_media'),
 ]
+
 
 
 
