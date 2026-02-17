@@ -8,6 +8,9 @@ from django.conf import settings
 from .models import PDFFile
 from django.shortcuts import get_object_or_404, redirect
 
+from django.contrib import messages
+from django.urls import reverse
+
 from django.shortcuts import render, get_object_or_404
 
 def about(request):
@@ -62,44 +65,61 @@ def send_email_with_attachment(subject, body, from_email, to_emails, attachment_
     email.send()
 
 
+
 def email_handler(request):
     if request.method == 'POST':
-        name = request.POST.get('name', '')
-        tel = request.POST.get('tel', '')
-        email = request.POST.get('email', '')
-        subject = request.POST.get('subject', '')
-        file = request.FILES.get('file')
+        name = request.POST.get('name', '').strip()
+        tel = request.POST.get('tel', '').strip()
+        email = request.POST.get('email', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        uploaded_file = request.FILES.get('file')
 
-        # Temporary directory for uploaded files
-        files_dir = os.path.join(settings.MEDIA_ROOT, 'files')
-        os.makedirs(files_dir, exist_ok=True)
+        # Basic validation
+        if not name or not tel or not email or not subject:
+            messages.error(request, "Barcha majburiy maydonlarni toʻldiring.")
+            return redirect('muallif')  # assuming you have a URL name for this page
 
         file_path = None
-        if file:
-            file_path = os.path.join(files_dir, file.name)
+        if uploaded_file:
+            # Limit file size (optional) – e.g., 10MB
+            if uploaded_file.size > 10 * 1024 * 1024:
+                messages.error(request, "Fayl hajmi 10MB dan oshmasligi kerak.")
+                return redirect('muallif')
+
+            # Save temporarily
+            files_dir = os.path.join(settings.MEDIA_ROOT, 'temp_uploads')
+            os.makedirs(files_dir, exist_ok=True)
+            file_path = os.path.join(files_dir, uploaded_file.name)
             with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
+                for chunk in uploaded_file.chunks():
                     f.write(chunk)
 
-        # Render email body
+        # Prepare email
         message = render_to_string('email.html', {
             'name': name,
             'tel': tel,
             'email': email,
             'subject': subject,
         })
-        email_subject = f"New request from {name}"
-        from_email = settings.EMAIL_HOST_USER  # or a default
-        to_emails = ['i.mahmudov@newuu.uz']  # consider moving to settings
+        email_subject = f"Yangi murojaat: {subject}"
+        from_email = settings.EMAIL_HOST_USER
+        to_emails = ['isfanchik1212@gmail.com']  # CHANGE THIS to your recipient email
 
-        send_email_with_attachment(email_subject, message, from_email, to_emails, file_path)
+        try:
+            send_email_with_attachment(email_subject, message, from_email, to_emails, file_path)
+            messages.success(request, "Murojaatingiz muvaffaqiyatli yuborildi. Tez orada siz bilan bogʻlanamiz.")
+        except Exception as e:
+            # Log the error (you can use print or logging)
+            print(f"Email error: {e}")
+            messages.error(request, "Xatolik yuz berdi. Iltimos, keyinroq urinib koʻring yoki administrator bilan bogʻlaning.")
+        finally:
+            # Clean up temp file
+            if file_path and os.path.exists(file_path):
+                os.remove(file_path)
 
-        # Clean up temporary file
-        if file_path and os.path.exists(file_path):
-            os.remove(file_path)
+        return redirect('muallif')  # redirect back to the form page
 
-        return HttpResponse("Success")
-    return HttpResponse("Failed")
+    return HttpResponse("Notoʻgʻri soʻrov", status=400)
 
 
 # ---------- Page views ----------
@@ -161,6 +181,7 @@ class TahririyatView(TemplateView):
 
 class TalablarView(TemplateView):
     template_name = 'talablar.html'
+
 
 
 
